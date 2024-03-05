@@ -42,9 +42,9 @@ const Navbar = (props) => {
             <Text>New chat </Text>
           </HStack>
           <Tippy content="New chat" placement="bottom">
-            <div className="cursor-pointer">
+            <span className="cursor-pointer">
               <EditIcon fontSize="20px" />
-            </div>
+            </span>
           </Tippy>
         </Flex>
         <Box

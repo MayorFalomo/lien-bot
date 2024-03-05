@@ -1,11 +1,11 @@
 "use client";
-import { Box, Container, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Text } from "@chakra-ui/react";
 import React from "react";
-import { DownloadIcon } from "@chakra-ui/icons";
+import { DownloadIcon, EditIcon } from "@chakra-ui/icons";
 import InputBox from "../inputBox/InputBox";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-const AnswerArea = () => {
+const AnswerArea = (props) => {
   return (
     <div className="h-[100vh] w-[100%] relative bg-red  ">
       <Box
@@ -20,9 +20,18 @@ const AnswerArea = () => {
         justifyContent="space-between"
         // border="2px blue solid"
       >
-        <Text fontSize="20px">Lien Bot </Text>
+        <Flex alignItems="center" gap="10px">
+          {props.navbarState ? (
+            <EditIcon cursor="pointer" fontSize="20px" />
+          ) : (
+            ""
+          )}
+          <Text fontSize="20px">Lien Bot </Text>
+        </Flex>
         <Tippy content="download as document" placement="bottom">
-          <DownloadIcon border="1px hs" fontSize="20px" cursor="pointer" />
+          <Box border="1px grey solid" borderRadius="7px" className="p-[6px]">
+            <DownloadIcon fontSize="22px" cursor="pointer" />
+          </Box>
         </Tippy>
       </Box>
       <Container

@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <main className={navbarState ? "activeBar" : "homeHeader"}>
       <Navbar navbarState={navbarState} setNavbarState={setNavbarState} />
-      <AnswerArea />
+      <AnswerArea navbarState={navbarState} />
     </main>
   );
 }
