@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { AppContext } from "./Helpers";
 // import { useCookies } from "react-cookie";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AppContextProvider = ({ children }) => {
   const router = useRouter();

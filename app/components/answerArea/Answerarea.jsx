@@ -3,6 +3,8 @@ import { Box, Container, Text } from "@chakra-ui/react";
 import React from "react";
 import { DownloadIcon } from "@chakra-ui/icons";
 import InputBox from "../inputBox/InputBox";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 const AnswerArea = () => {
   return (
     <div className="h-[100vh] w-[100%] relative bg-red  ">
@@ -19,13 +21,15 @@ const AnswerArea = () => {
         // border="2px blue solid"
       >
         <Text fontSize="20px">Lien Bot </Text>
-        <DownloadIcon fontSize="20px" />
+        <Tippy content="download as document" placement="bottom">
+          <DownloadIcon border="1px hs" fontSize="20px" cursor="pointer" />
+        </Tippy>
       </Box>
       <Container
         w="100%"
         minW="100%"
         p="20px"
-        mb="20px"
+        mb="10px"
         className="absolute left-0 right-0 bottom-0 w-[100%] "
         display="flex"
         flexDirection="column"
@@ -34,7 +38,9 @@ const AnswerArea = () => {
         // border="2px blue solid"
       >
         <InputBox />
-        <Text textAlign="center">Consider cross checking your report </Text>
+        <Text fontSize="sm" textAlign="center">
+          Consider cross checking your report{" "}
+        </Text>
       </Container>
     </div>
   );

@@ -19,6 +19,8 @@ import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase-config/Firebase-config";
 import { useAppContext } from "@/app/helper/Helpers";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const { contextValue } = useAppContext();
@@ -73,6 +75,9 @@ const SignUp = () => {
 
           //   contextValue?.getCurrentUser(userInfo?._id);
           router.push("/");
+          toast(
+            `${response.user.displayName}, you have registered successfully!`
+          );
         })
         .catch((err) => console.log(err && setIsAuth(true)));
     } catch (err) {
@@ -174,7 +179,8 @@ const SignUp = () => {
               className="flex flex-col gap-6 w-full "
               onSubmit={handleSubmit}
             >
-              <Input placeholder="Email address" size="lg" />
+              <Input placeholder="Enter email address" size="lg" />
+              <Input placeholder="Enter password" size="lg" />
               <Button type="submit" w="100%" colorScheme="teal" size="lg">
                 Create Account
               </Button>
@@ -206,6 +212,7 @@ const SignUp = () => {
           </Stack>
         </Box>
       </Container>
+      <ToastContainer />
     </Container>
   );
 };

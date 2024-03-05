@@ -8,23 +8,24 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { ChevronLeftIcon, ChevronRightIcon, EditIcon } from "@chakra-ui/icons";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+import { motion } from "framer-motion";
 
-import React from "react";
-import { EditIcon } from "@chakra-ui/icons";
-
-const Navbar = () => {
+const Navbar = (props) => {
   return (
     <div>
       <Container
         position="relative"
-        w="300px"
         // border="2px red solid"
         height="100vh"
         bg="#F9F9F9"
         p="0"
       >
         <Flex
-          //   border="2px red solid"
+          // border="2px red solid"
           position="absolute"
           left="0"
           top="0"
@@ -34,14 +35,17 @@ const Navbar = () => {
           justifyContent="space-between"
           gap="8px"
           p="20px"
+          display={props.navbarState ? "none" : "flex"}
         >
           <HStack alignItems="center" spacing="7px">
             <Avatar size={"sm"} src="./chatgpt.svg" />
             <Text>New chat </Text>
           </HStack>
-          <div className="cursor-pointer">
-            <EditIcon fontSize="20px" />
-          </div>
+          <Tippy content="New chat" placement="bottom">
+            <div className="cursor-pointer">
+              <EditIcon fontSize="20px" />
+            </div>
+          </Tippy>
         </Flex>
         <Box
           m="0"
@@ -49,7 +53,7 @@ const Navbar = () => {
           height="90%"
           overflow="auto"
           w="100%"
-          //   border="2px green solid"
+          // border="2px green solid"
         >
           {/* This would be where the previous questions you asked would be */}
         </Box>
@@ -59,12 +63,13 @@ const Navbar = () => {
           bottom="0px"
           zIndex="999"
           p="20px"
-          display="flex"
-          justifyContent="space-evenly"
+          display={props.navbarState ? "none" : "flex"}
+          justifyContent="flex-start"
           alignItems="center"
           gap="10px"
           w="100%"
-          //   border="2px red solid"
+          className="cursor-pointer hover:bg-#fff"
+          // border="2px red solid"
         >
           <Image
             borderRadius="full"
@@ -75,6 +80,20 @@ const Navbar = () => {
             }
           />
           <Text fontSize="md">Harry Potter </Text>
+        </Box>
+        <Box
+          position="absolute"
+          zIndex="99"
+          top="50%"
+          right="-30px"
+          cursor="pointer"
+          onClick={() => props.setNavbarState(!props.navbarState)}
+        >
+          {props.navbarState ? (
+            <ChevronRightIcon className="text-[28px]" cursor="pointer" />
+          ) : (
+            <ChevronLeftIcon className="text-[28px]" cursor="pointer" />
+          )}
         </Box>
       </Container>
     </div>

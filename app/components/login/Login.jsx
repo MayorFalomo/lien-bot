@@ -18,6 +18,8 @@ import { FcGoogle } from "react-icons/fc";
 import { useAppContext } from "@/app/helper/Helpers";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase-config/Firebase-config";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { contextValue } = useAppContext();
@@ -40,6 +42,7 @@ const Login = () => {
 
         // const response = await axios.get(`https://`);
         router.push("/");
+        toast(`${res.user.displayName}, login successful!`);
 
         if (userInfo?.userId) {
           localStorage.setItem("user", userInfo?.userId);
@@ -126,7 +129,8 @@ const Login = () => {
               className="flex flex-col gap-6 w-full "
               onSubmit={handleLogin}
             >
-              <Input placeholder="Email address" size="lg" />
+              <Input type="email" placeholder="Enter email address" size="lg" />
+              <Input type="password" placeholder="Enter password" size="lg" />
               <Button w="100%" colorScheme="teal" size="lg">
                 Login to your account
               </Button>
@@ -157,6 +161,7 @@ const Login = () => {
           </Stack>
         </Box>
       </Container>
+      <ToastContainer />
     </Container>
   );
 };
