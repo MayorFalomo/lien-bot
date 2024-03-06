@@ -13,16 +13,19 @@ import { ChevronLeftIcon, ChevronRightIcon, EditIcon } from "@chakra-ui/icons";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { motion } from "framer-motion";
-
+import "./Navbar.css";
 const Navbar = (props) => {
+  console.log(props.size, "props.size");
   return (
     <div>
       <Container
         position="relative"
         // border="2px red solid"
         height="100vh"
-        bg="#F9F9F9"
+        bg="#FAFAFA"
+        // bg="#F9F9F9"
         p="0"
+        className="max-[650px]:hidden"
       >
         <Flex
           // border="2px red solid"
@@ -68,7 +71,7 @@ const Navbar = (props) => {
           alignItems="center"
           gap="10px"
           w="100%"
-          className="cursor-pointer hover:bg-#fff"
+          className="cursor-pointer max-[650px]:hidden hover:bg-#fff"
           // border="2px red solid"
         >
           <Image
@@ -80,20 +83,6 @@ const Navbar = (props) => {
             }
           />
           <Text fontSize="md">Harry Potter </Text>
-        </Box>
-        <Box
-          position="absolute"
-          zIndex="99"
-          top="50%"
-          right="-30px"
-          cursor="pointer"
-          onClick={() => props.setNavbarState(!props.navbarState)}
-        >
-          {props.navbarState ? (
-            <ChevronRightIcon className="text-[28px]" cursor="pointer" />
-          ) : (
-            <ChevronLeftIcon className="text-[28px]" cursor="pointer" />
-          )}
         </Box>
       </Container>
     </div>

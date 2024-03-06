@@ -9,7 +9,8 @@
 }
 
 body {
- 
+ overflow-x: hidden;
+ position: relative;
 }
 
 .homeHeader{
@@ -22,6 +23,19 @@ body {
   grid-template-columns: 0px auto;
     transition: all 0.4s ease;
 }
+
+.mobile{
+
+}
+
+@media (max-width: 650px) {
+  .homeHeader{
+  display: grid;
+  grid-template-columns: 0 auto;
+    transition: all 0.4s ease;
+}
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
