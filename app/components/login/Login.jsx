@@ -20,6 +20,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase-config/Firebase-config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const Login = () => {
   const { contextValue } = useAppContext();
@@ -130,7 +131,31 @@ const Login = () => {
               onSubmit={handleLogin}
             >
               <Input type="email" placeholder="Enter email address" size="lg" />
-              <Input type="password" placeholder="Enter password" size="lg" />
+              {hidePassword ? (
+                <Box position="relative">
+                  <Input type="text" placeholder="Enter password" size="lg" />
+                  <span
+                    onClick={() => setHidePassword(false)}
+                    className="absolute right-2 top-3 z-10 cursor-pointer"
+                  >
+                    {<ViewOffIcon />}{" "}
+                  </span>
+                </Box>
+              ) : (
+                <Box position="relative">
+                  <Input
+                    type="password"
+                    placeholder="Enter password"
+                    size="lg"
+                  />
+                  <span
+                    onClick={() => setHidePassword(true)}
+                    className="absolute right-2 top-3 z-10 cursor-pointer"
+                  >
+                    {<ViewIcon />}{" "}
+                  </span>
+                </Box>
+              )}
               <Button w="100%" colorScheme="teal" size="lg">
                 Login to your account
               </Button>

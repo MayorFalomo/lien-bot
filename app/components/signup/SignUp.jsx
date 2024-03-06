@@ -12,7 +12,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { IconButton } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
 import NextLink from "next/link";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
@@ -21,6 +20,7 @@ import { useAppContext } from "@/app/helper/Helpers";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const SignUp = () => {
   const { contextValue } = useAppContext();
@@ -28,6 +28,8 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [hidePassword, setHidePassword] = useState(false);
+
   const [notifications, setNotifications] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
 
@@ -180,7 +182,31 @@ const SignUp = () => {
               onSubmit={handleSubmit}
             >
               <Input placeholder="Enter email address" size="lg" />
-              <Input placeholder="Enter password" size="lg" />
+              {hidePassword ? (
+                <Box position="relative">
+                  <Input type="text" placeholder="Enter password" size="lg" />
+                  <span
+                    onClick={() => setHidePassword(false)}
+                    className="absolute right-2 top-3 z-10 cursor-pointer"
+                  >
+                    {<ViewOffIcon />}{" "}
+                  </span>
+                </Box>
+              ) : (
+                <Box position="relative">
+                  <Input
+                    type="password"
+                    placeholder="Enter password"
+                    size="lg"
+                  />
+                  <span
+                    onClick={() => setHidePassword(true)}
+                    className="absolute right-2 top-3 z-10 cursor-pointer"
+                  >
+                    {<ViewIcon />}{" "}
+                  </span>
+                </Box>
+              )}
               <Button type="submit" w="100%" colorScheme="teal" size="lg">
                 Create Account
               </Button>
