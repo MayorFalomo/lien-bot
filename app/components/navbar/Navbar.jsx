@@ -20,15 +20,12 @@ const Navbar = (props) => {
     <div>
       <Container
         position="relative"
-        // border="2px red solid"
         height="100vh"
         bg="#FAFAFA"
-        // bg="#F9F9F9"
         p="0"
         className="max-[650px]:hidden"
       >
         <Flex
-          // border="2px red solid"
           position="absolute"
           left="0"
           top="0"

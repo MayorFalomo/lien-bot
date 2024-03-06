@@ -54,6 +54,7 @@ const AnswerArea = (props) => {
         flexDirection="column"
         alignItems="center"
         gap="10px"
+        padding="0"
         // border="2px blue solid"
       >
         <InputBox />

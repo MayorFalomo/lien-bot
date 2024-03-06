@@ -17,7 +17,7 @@ const InputBox = () => {
 
   function PasswordInput() {}
   return (
-    <div className="flex justify-center max-w-[700px] w-[60%] max-md:w-[100%] ">
+    <div className="flex justify-center max-w-[700px] w-[60%] max-md:w-[95%] ">
       <form className="w-[100%] max-h-[100px] flex items-center rounded-[10px] border-2 border-grey-400">
         <Textarea
           minH="unset"

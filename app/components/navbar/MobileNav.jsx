@@ -9,7 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon, EditIcon } from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { AnimatePresence, motion } from "framer-motion";
@@ -17,7 +17,6 @@ import "./Navbar.css";
 import { CloseIcon } from "@chakra-ui/icons";
 
 const MobileNav = (props) => {
-  console.log(props.mobileNav, "size");
   return (
     <AnimatePresence key={props.mobileNav ? "exit" : "stay"} mode="wait">
       <motion.div
@@ -48,18 +47,11 @@ const MobileNav = (props) => {
         }}
         className={props.mobileNav ? "activeNav" : "inActiveNav"}
       >
-        <Container
-          position="relative"
-          // border="2px red solid"
-          height="100vh"
-          bg="#FAFAFA"
-          // bg="#F9F9F9"
-          p="0"
-        >
+        <Container position="relative" height="100vh" bg="#FAFAFA" p="0">
           {props.mobileNav && (
             <span
               onClick={() => props.setMobileNav(false)}
-              className="fixed right-[100px] top-6 z-50 border-2 border-grey-600 p-2 rounded-[8px] cursor-pointer"
+              className="absolute right-[-40px] top-6 z-50 border-2 border-grey-600 p-2 rounded-[8px] cursor-pointer"
             >
               {<CloseIcon />}{" "}
             </span>
