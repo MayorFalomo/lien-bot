@@ -1,0 +1,184 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+   overflow-x: hidden;
+}
+
+.App{
+    overflow-x: hidden;
+    max-width: 80vw;
+    margin: 30px auto;
+   /* F1F4FD */
+}
+
+.App p{
+    line-height: 1.6;
+}
+
+.App .first-section{
+    border-right: 2px black solid;
+    padding: 10px;
+    width: 50%;
+        /* width: fit-content; */
+
+}
+
+.App .first-section .addressBox{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    /* width: 500px; */
+    /* width: ; */
+    max-width: 90%;
+    /* border: 2px red solid; */
+}
+
+.App .first-section .addressBox p{
+    text-decoration: underline;
+        background-color: #F1F4FD;
+    padding-top: 15px;
+}
+
+.App .first-section .emptyBoxes{
+    background-color: #F1F4FD;
+    /* text-decoration: underline;
+    padding: 5px; */
+    margin-top: 10px;
+    border-bottom: 2px #000 solid;
+    width: 90%;
+    height: 25px;
+}
+
+.second-section{
+    display: flex;
+    align-items: flex-start;
+}
+
+.App .second-section{
+    border-top: 2px black solid;
+    margin-bottom: 10px;
+    /* padding: 10px;
+    width: fit-content; */
+}
+
+.App .second-section .claim-mechanics{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+}
+
+.App .second-section .recorders-use{
+    width: 60%;
+    padding: 10px;
+    border-left: 1px rgba(128, 128, 128, 0.549) solid;
+    border-bottom: 1px grey solid;
+    border-right: 1px grey solid;
+}
+
+.App .second-section .recorders-use .checkboxContainer{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    /* border: 2px red solid; */
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.App .second-section .flexedCheckContainer{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    /* margin-top: 5px;
+    margin-bottom: 5px; */
+}
+
+.App .letter-content{
+   /* border: 2px red solid; */
+   margin-top: 20px;
+}
+
+.App .letter-content .mainContentContainer p{
+    line-height: 1.6;
+}
+
+.App .letter-content .mainContentContainer .first-part{
+  margin: 10px auto;
+}
+.App .letter-content .mainContentContainer .first-part span{
+    text-decoration: underline;
+    padding-top: 7px;
+    background-color: #F1F4FD;
+}
+
+.App .third-section{
+  margin-top: 20px;
+  /* border: 2px red solid; */
+}
+.App .third-section .claimant-section{
+    display: flex;
+    align-items: flex-start;
+      /* border: 2px blue solid; */
+
+}
+.App .claimant-section .dated{
+width: 45%;
+}
+
+.App .claimant-section .dated span{
+      text-decoration: underline;
+    padding-top: 7px;
+    background-color: #F1F4FD;
+}
+.App .claimant-section .claimant{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.App .claimant-section .claimant .claimantText p{
+     text-decoration: underline;
+    padding-top: 7px;
+    background-color: #F1F4FD;
+}
+
+.App footer{
+    margin: 20px auto;
+}
+
+
+.App footer p span{
+     text-decoration: underline;
+    padding-top: 7px;
+    background-color: #F1F4FD;
+}
+
+.App footer .dated-footer{
+    display: flex !important;
+    align-items: flex-start !important;
+    margin: 20px auto;
+          /* border: 2px red solid; */
+
+}
+.App footer .dated-footer .dated{
+    width: 45%;
+}
+.App footer .dated-footer .signature{
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+      /* border: 2px red solid; */
+
+}
+.App footer .dated-footer span{
+     text-decoration: underline;
+    padding-top: 7px;
+    background-color: #F1F4FD;
+}
+

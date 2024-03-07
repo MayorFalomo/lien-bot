@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import NextLink from "next/link";
-import { IconButton } from "@chakra-ui/react";
 import { FcGoogle } from "react-icons/fc";
 import { useAppContext } from "@/app/helper/Helpers";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
@@ -84,7 +83,7 @@ const Login = () => {
   };
 
   return (
-    <Container width="100vw" height="100vh" maxHeight="100vh">
+    <Container width="100vw" height="100vh" p="0" maxHeight="100vh">
       <Container
         display="flex"
         flexDirection="column"
@@ -171,6 +170,7 @@ const Login = () => {
               <Text fontSize="sm">OR </Text>
               <span className="h-[1px] w-[200px] bg-black opacity-[0.25]  max-nav:w-[150px] max-sm:w-[100px]  "></span>
             </Flex>
+            r4
             <Button
               display="flex"
               alignItems="center"

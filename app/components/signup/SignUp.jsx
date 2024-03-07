@@ -131,12 +131,12 @@ const SignUp = () => {
   };
 
   return (
-    <Container width="100vw" height="100vh" maxHeight="100vh">
+    <Container width="100vw" height="100vh" p="0" m="0" maxHeight="100vh">
       <Container
         display="flex"
         flexDirection="column"
         justifyContent="space-between"
-        // border="2px blue solid"
+        border="2px blue solid"
         height="100%"
         width={{ base: "100%", sm: "100%", nav: "90%" }}
         p="0"
