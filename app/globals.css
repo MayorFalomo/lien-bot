@@ -11,6 +11,7 @@
 body {
  overflow: hidden;
  position: relative;
+ max-height: 100vh;
 }
 
 .homeHeader{
@@ -18,13 +19,13 @@ body {
   grid-template-columns: 300px auto;
   transition: all 0.4s ease;
   height: 100vh;
-  border: 2px red solid;
+  /* border: 2px red solid; */
 }
 .activeBar{
   display: grid;
   grid-template-columns: 0px auto;
     transition: all 0.4s ease;
-      border: 2px blue solid;
+      /* border: 2px blue solid; */
   height: 100vh;
 
 }
