@@ -13,8 +13,9 @@ body{
 
 .App{
     overflow-x: hidden;
-    max-width: 80vw;
-    margin: 30px auto;
+    max-width: 100%;
+    max-height: 100vw;
+    /* margin: 30px auto; */
    /* F1F4FD */
 }
 
