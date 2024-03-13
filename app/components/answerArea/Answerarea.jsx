@@ -51,7 +51,7 @@ const AnswerArea = (props) => {
       <Box mt="100px" h="600px" maxH="65%" overflow="auto">
         {chat.map((con, index) => {
           return (
-            <Box width="90%" m="auto" key={index}>
+            <Box width="90%" maxW="70%" m="auto" key={index}>
               <ChatArea con={con} />
               {/* <h1>{con.botReply} </h1>
               <Text>{con.question} </Text> */}
