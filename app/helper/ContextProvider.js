@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 const AppContextProvider = ({ children }) => {
   const router = useRouter();
   const [activeId, setActiveId] = useState("");
+  const [id, setId] = useState("");
 
   useEffect(() => {
     // Perform localStorage action
@@ -28,30 +29,35 @@ const AppContextProvider = ({ children }) => {
 
   // console.log(currentUser, "currentUser");
 
-  //getCurrentUser takes in a parameter called Id which we'll get from currentUser which is cookies.user
+  // getCurrentUser takes in a parameter called Id which we'll get from currentUser which is cookies.user
 
-  //   const getCurrentUser = async (id) => {
-  //     if (id) {
-  //       try {
-  //         // console.log(id, "This is id");
-  //         await axios
-  //           .get(`https://`)
-  //           .then((res) => {
-  //             // console.log(res.data, "This is res.data");
-  //             // setUser(res.data);
-  //             router.push("/");
-  //             // toast.success("login successful");
-  //             // toast.success(`Merry Christmas ${res.data?.username} `);
-  //           })
-  //           .catch((err) => {
-  //             console.log(err && router.push("/signup"));
-  //           });
-  //         // console.log(res, "This is res");
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     }
-  //   };
+  const getCurrentUser = async (token) => {
+    if (token) {
+      console.log(token);
+      try {
+        const response = await axios({
+          method: "POST",
+          url: "http://217.160.156.197/create_assistant",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setId(token);
+
+        // Handling the response based on the server's reply
+        if (response.status === 200) {
+          // Process the response data
+          console.log(response.data, "This is response data");
+        } else {
+          // Handle errors or unauthorized access
+        }
+        // console.log(res, "This is res");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   //UseEffect to load cookies.user and just
   //   useEffect(() => {
@@ -61,7 +67,8 @@ const AppContextProvider = ({ children }) => {
   const contextValue = {
     user,
     setUser,
-    // getCurrentUser,
+    getCurrentUser,
+    id,
   };
 
   return (

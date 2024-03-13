@@ -21,12 +21,13 @@ import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import axios from "axios";
 
 const SignUp = () => {
   const { contextValue } = useAppContext();
 
   const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
+  // const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [hidePassword, setHidePassword] = useState(false);
 
@@ -92,33 +93,36 @@ const SignUp = () => {
   //Sign up by creating account
   const handleSubmit = async (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password).then(
-      async (response) => {
-        localStorage.setItem("user", generatedId);
-        const userInfo = {
-          _id: generatedId, //Self generated
-          userId: response.user.uid, //userId is from google
-          username: userName,
-          email: email,
-          password: password,
-          //   profileDp:
-          //     "https://i.pinimg.com/564x/33/f4/d8/33f4d8c6de4d69b21652512cbc30bb05.jpg",
-        };
-        try {
-          await axios.post(
-            // "https://keep-backend-theta.vercel.app/api/users/register",
-            userInfo
-          );
+    const userInfo = {
+      email: email,
+      password: password,
+    };
 
-          await contextValue
-            ?.getCurrentUser(userInfo?._id)
-            .catch((err) => err && setIsAuth(true));
-          router.push("/");
-        } catch (error) {
-          console.log(error && setIsAuth(true));
-        }
+    console.log(userInfo, "UserInfo");
+
+    try {
+      const response = await axios({
+        method: "POST",
+        url: "http://217.160.156.197/signup/",
+        data: userInfo,
+        headers: {
+          "Content-Type": "application/json", // Corrected "multipart/json" to "application/json"
+        },
+      });
+
+      if (response.status === 201) {
+        router.push("/login");
+      } else {
+        console.log("Validation Error");
+        setIsAuth(true);
       }
-    );
+      // If the response contains an id, then let getCurrentUser function route to the home page/chat section
+      // contextValue.getCurrentUser(response.data.user._id);
+      // router.push("/");
+    } catch (error) {
+      console.log(error);
+      setIsAuth(true);
+    }
   };
 
   const breakpoints = {
@@ -131,16 +135,26 @@ const SignUp = () => {
   };
 
   return (
-    <Container width="100vw" height="100vh" p="0" m="0" maxHeight="100vh">
+    <Container
+      width="100vw"
+      max-width="100%"
+      minW="100%"
+      height="100vh"
+      p="0"
+      m="0"
+      overflow="hidden"
+      // border="2px yellow solid"
+      maxHeight="100vh"
+    >
       <Container
         display="flex"
         flexDirection="column"
+        alignItems="center"
         justifyContent="space-between"
-        border="2px blue solid"
         height="100%"
-        width={{ base: "100%", sm: "100%", nav: "90%" }}
         p="0"
-        m="0"
+        m="0 auto"
+        // border="2px red solid"
         // p={{ base: "0", sm: "0" }}
         // m={{ base: "0", sm: "0" }}
       >
@@ -159,10 +173,11 @@ const SignUp = () => {
           justifyContent="center"
           alignItems="center"
           height="100%"
-          width="100%"
+          width="95%"
+          // width={{ base: "95%", sm: "95%", nav: "90%" }}
           p="0"
-          m="0"
-          //   border="2px yellow solid"
+          m="0 auto"
+          // border="2px green solid"
         >
           <Stack
             display="flex"
@@ -181,10 +196,19 @@ const SignUp = () => {
               className="flex flex-col gap-6 w-full "
               onSubmit={handleSubmit}
             >
-              <Input placeholder="Enter email address" size="lg" />
+              <Input
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter email address"
+                size="lg"
+              />
               {hidePassword ? (
                 <Box position="relative">
-                  <Input type="text" placeholder="Enter password" size="lg" />
+                  <Input
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="text"
+                    placeholder="Enter password"
+                    size="lg"
+                  />
                   <span
                     onClick={() => setHidePassword(false)}
                     className="absolute right-2 top-3 z-10 cursor-pointer"
@@ -198,6 +222,7 @@ const SignUp = () => {
                     type="password"
                     placeholder="Enter password"
                     size="lg"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <span
                     onClick={() => setHidePassword(true)}
@@ -207,14 +232,22 @@ const SignUp = () => {
                   </span>
                 </Box>
               )}
-              <Button type="submit" w="100%" colorScheme="teal" size="lg">
+              <Button type="submit" w="100%" colorScheme="blue" size="lg">
                 Create Account
               </Button>
+              {isAuth ? (
+                <Text color="red" textAlign="center">
+                  {" "}
+                  seems like something went wrong.{" "}
+                </Text>
+              ) : (
+                ""
+              )}
             </form>
             <Text fontSize="md">
               Already have an account?{" "}
               <Link as={NextLink} href="/login">
-                <span className="text-[teal] cursor-pointer ">Login</span>
+                <span className="text-[blue] cursor-pointer ">Login</span>
               </Link>
             </Text>
             <Flex alignItems="center" gap="10px">

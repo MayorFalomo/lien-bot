@@ -15,7 +15,6 @@ import "tippy.js/dist/tippy.css";
 import { motion } from "framer-motion";
 import "./Navbar.css";
 const Navbar = (props) => {
-  console.log(props.size, "props.size");
   return (
     <div>
       <Container

@@ -20,6 +20,8 @@ import { auth, provider } from "../firebase-config/Firebase-config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
   const { contextValue } = useAppContext();
@@ -29,6 +31,8 @@ const Login = () => {
   const [isAuth, setIsAuth] = useState(false);
   const [hidePassword, setHidePassword] = useState(false);
   const [InLocalStorage, setInLocalStorage] = useState(false);
+
+  const router = useRouter();
 
   const signInWithGoogle = async (e) => {
     e.preventDefault();
@@ -58,32 +62,44 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(async (res) => {
-        // console.log(res, "This is res");
-        // console.log(res.user.uid, "This is res.user.uid");
-        // const userObject = await axios.get(
-        //   `https://keep-backend-theta.vercel.app/api/users/get-user/uid/${res.user.uid}`
-        // );
-        console.log(res, "This is res");
-        // localStorage.setItem("user", res.data?._id);
-        router.push("/");
 
-        // if (userObject.data?._id) {
-        //   userObject.data?._id
-        //     ? contextValue?.getCurrentUser(userObject.data?._id)
-        //     : "";
-        //   router.push("/");
-        // }
-        // router.push("/");
-        // window.location.reload();
-        // await contextValue?.getCurrentUser(userObject.data?._id);
-      })
-      .catch((err) => console.log(err));
+    const userInfo = {
+      email: email,
+      password: password,
+    };
+    console.log(userInfo, "This is userInfo");
+    const response = await axios({
+      method: "POST",
+      url: "http://217.160.156.197/login/",
+      data: userInfo,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.status === 200) {
+      localStorage.setItem("token", response.data.token);
+      router.push("/");
+      contextValue.getCurrentUser(response.data.token);
+    } else {
+      console.log("Validation Error");
+      setIsAuth(true);
+    }
+    try {
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <Container width="100vw" height="100vh" p="0" maxHeight="100vh">
+    <Container
+      width="100vw"
+      height="100vh"
+      overflow="hidden"
+      p="0"
+      m="0 auto"
+      maxHeight="100vh"
+    >
       <Container
         display="flex"
         flexDirection="column"
@@ -108,9 +124,9 @@ const Login = () => {
           justifyContent="center"
           alignItems="center"
           height="100%"
-          width="100%"
+          width="95%"
           p="0"
-          m="0"
+          m="0 auto"
         >
           <Stack
             display="flex"
@@ -129,10 +145,20 @@ const Login = () => {
               className="flex flex-col gap-6 w-full "
               onSubmit={handleLogin}
             >
-              <Input type="email" placeholder="Enter email address" size="lg" />
+              <Input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Enter email address"
+                size="lg"
+              />
               {hidePassword ? (
                 <Box position="relative">
-                  <Input type="text" placeholder="Enter password" size="lg" />
+                  <Input
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="text"
+                    placeholder="Enter password"
+                    size="lg"
+                  />
                   <span
                     onClick={() => setHidePassword(false)}
                     className="absolute right-2 top-3 z-10 cursor-pointer"
@@ -146,6 +172,7 @@ const Login = () => {
                     type="password"
                     placeholder="Enter password"
                     size="lg"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <span
                     onClick={() => setHidePassword(true)}
@@ -155,9 +182,17 @@ const Login = () => {
                   </span>
                 </Box>
               )}
-              <Button w="100%" colorScheme="teal" size="lg">
+              <Button type="submit" w="100%" colorScheme="blue" size="lg">
                 Login to your account
               </Button>
+              {isAuth ? (
+                <Text color="red" textAlign="center">
+                  {" "}
+                  seems something went wrong.{" "}
+                </Text>
+              ) : (
+                ""
+              )}
             </form>
             <Text fontSize="md">
               Don't have have an account?{" "}
