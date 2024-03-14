@@ -191,7 +191,7 @@ const ChatArea = ({
             typewriter
               .typeString(`${con.bot}`)
 
-              .changeDelay(50)
+              .changeDelay(0.02)
 
               .pauseFor(100)
               .start()

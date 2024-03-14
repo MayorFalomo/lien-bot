@@ -12,10 +12,12 @@ import React from "react";
 import ResizeTextarea from "react-textarea-autosize";
 import { forwardRef } from "@chakra-ui/react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 const InputBox = (props) => {
   const [show, setShow] = React.useState(false);
   const [query, setQuery] = React.useState("");
 
+  const router = useRouter();
   //   setChat(prevChat => {
   //   const newChat = [...prevChat]; // create a copy of the state
   //   newChat.push(item); // push the new item
@@ -50,6 +52,11 @@ const InputBox = (props) => {
         console.log(err);
         props.setErr(true);
       });
+      if (response.status == 401) {
+        props.setErr(true);
+        router.push("/login");
+      }
+
       props.setLoader(false);
       setQuery("");
       // console.log(response, "res");
