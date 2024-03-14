@@ -52,12 +52,12 @@ const InputBox = (props) => {
       });
       props.setLoader(false);
       setQuery("");
-      console.log(response, "res");
+      // console.log(response, "res");
 
-      // props.setChat((prevChat) => {
-      //   return [...prevChat, { bot: response.data?.bot }];
-      // });
-      console.log(response.data);
+      props.setChat((prevChat) => {
+        return [...prevChat, { bot: response.data?.bot }];
+      });
+      // console.log(response.data.bot);
       // props.setBotAnswer(response.data.bot);
 
       chat.query = "";

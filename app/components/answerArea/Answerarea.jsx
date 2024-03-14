@@ -162,8 +162,6 @@ const ChatArea = ({
 }) => {
   const ref = useRef(null);
   const isLast = chatIndex == chat.length - 1;
-  console.log(chat.length - 1, "length");
-  console.log(isLast, "is last");
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -185,7 +183,7 @@ const ChatArea = ({
         )}
       </div>
 
-      {/* {loader && isLast ? (
+      {loader && isLast ? (
         <span className="loader"></span>
       ) : isLast ? (
         <Typewriter
@@ -193,7 +191,7 @@ const ChatArea = ({
             typewriter
               .typeString(`${con.bot}`)
 
-              .changeDelay(0.1)
+              .changeDelay(50)
 
               .pauseFor(100)
               .start()
@@ -204,8 +202,8 @@ const ChatArea = ({
           }}
         />
       ) : (
-        con.bot
-      )} */}
+        <Text>{con.bot} </Text>
+      )}
     </div>
   );
 };
