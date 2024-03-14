@@ -22,8 +22,13 @@ const InputBox = (props) => {
   //   return newChat; // update the state
   // });
 
+  const handleSubmit = async (e) => {
+    e.code == "Enter" && chatWithBot(e);
+  };
+
   const chatWithBot = async (e) => {
     e.preventDefault();
+    props.setLoader(true);
     if (query) {
       props.setChat((prev) => [...prev, { bot: "", question: query }]);
       // props.setChat((prev) => [...prev, query]);
@@ -42,6 +47,9 @@ const InputBox = (props) => {
         },
         data: chat,
       });
+      props.setLoader(false);
+      setQuery("");
+
       props.setChat((prevChat) => {
         return [...prevChat, { bot: response.data.bot }];
       });
@@ -54,7 +62,7 @@ const InputBox = (props) => {
   return (
     <div className="flex justify-center max-w-[700px] w-[60%] max-md:w-[95%] ">
       <form
-        onSubmit={chatWithBot}
+        onSubmit={handleSubmit}
         className="w-[100%] max-h-[100px] flex items-center rounded-[10px] border-2 border-grey-400"
       >
         <Textarea
@@ -71,6 +79,8 @@ const InputBox = (props) => {
           placeholder="Ask me something"
           _placeholder={{ pt: "10px" }}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={handleSubmit}
+          value={query}
           // onChange={(e) => {
           //   props.setChat({
           //     ...props.chat,

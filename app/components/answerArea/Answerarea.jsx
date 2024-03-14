@@ -1,16 +1,18 @@
 "use client";
 import { Box, Container, Flex, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DownloadIcon, EditIcon } from "@chakra-ui/icons";
 import InputBox from "../inputBox/InputBox";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { HamburgerIcon, MenuIcon } from "@chakra-ui/icons";
+import "./Answer.css";
 
 const AnswerArea = (props) => {
   const [botAnswer, setBotAnswer] = React.useState("");
   const [query, setQuery] = React.useState("");
+  const [loader, setLoader] = React.useState(true);
 
   const [chat, setChat] = React.useState([
     {
@@ -19,8 +21,16 @@ const AnswerArea = (props) => {
     },
   ]);
 
+  const breakpoints = {
+    base: "0px",
+    sm: "450px",
+    md: "768px",
+    lg: "960px",
+    xl: "1200px",
+    "2xl": "1536px",
+  };
   return (
-    <div className="h-[100vh] w-[100%] relative  ">
+    <div className="h-[100vh] max-h-full w-[100%] relative  ">
       <Box
         position="absolute"
         top="0"
@@ -43,15 +53,29 @@ const AnswerArea = (props) => {
           <Text fontSize="20px">Lien Bot </Text>
         </Flex>
         <Tippy content="download as document" placement="bottom">
-          <Box border="1px grey solid" borderRadius="7px" className="p-[6px]">
-            <DownloadIcon fontSize="22px" cursor="pointer" />
+          <Box
+            border="1px grey solid"
+            borderRadius="7px"
+            className="py-[4px] px-[6px]"
+          >
+            <DownloadIcon fontSize="20px" cursor="pointer" />
           </Box>
         </Tippy>
       </Box>
-      <Box mt="100px" h="600px" maxH="65%" overflow="auto">
+      <Box
+        mt="100px"
+        h="600px"
+        maxH="65%"
+        overflow="auto"
+        className="max-[600px]:overflow-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none'] "
+      >
         {chat.map((con, index) => {
           return (
-            <Box width="90%" maxW="70%" m="auto" key={index}>
+            <Box
+              className="max-w-[700px] max-lg:w-[70%] max-nav:w-[95%] "
+              m="auto"
+              key={index}
+            >
               <ChatArea con={con} />
               {/* <h1>{con.botReply} </h1>
               <Text>{con.question} </Text> */}
@@ -79,6 +103,8 @@ const AnswerArea = (props) => {
           query={query}
           chat={chat}
           setChat={setChat}
+          loader={loader}
+          setLoader={setLoader}
         />
         <Text fontSize="sm" textAlign="center">
           Consider cross checking your report{" "}
@@ -111,12 +137,18 @@ const AnswerArea = (props) => {
   );
 };
 
-const ChatArea = ({ con }) => {
+const ChatArea = ({ con, loader }) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  }, [con]);
+
   return (
-    <div className="">
+    <div ref={ref} className="">
       <div className="flex flex-end m-[auto]">
         {con.question ? (
-          <p className="p-2 my-3 rounded-[15px] m-auto bg-[#6841EA] text-[#fff] flex justify-end text-right w-[100%]">
+          <p className="p-2 my-3 rounded-[15px] m-auto bg-[#6841EA] text-[#fff] text-[18px] flex justify-end text-right w-[100%]">
             {" "}
             {con.question}
           </p>
@@ -125,7 +157,7 @@ const ChatArea = ({ con }) => {
         )}
       </div>
 
-      <Text>{con.bot} </Text>
+      {loader ? <span class="loader"></span> : <Text>{con.bot} </Text>}
     </div>
   );
 };
