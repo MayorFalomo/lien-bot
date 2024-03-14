@@ -46,23 +46,30 @@ const InputBox = (props) => {
           Authorization: `Bearer ${token}`,
         },
         data: chat,
+      }).catch((err) => {
+        console.log(err);
+        props.setErr(true);
       });
       props.setLoader(false);
       setQuery("");
+      console.log(response, "res");
 
-      props.setChat((prevChat) => {
-        return [...prevChat, { bot: response.data.bot }];
-      });
-      props.setBotAnswer(response.data.bot);
+      // props.setChat((prevChat) => {
+      //   return [...prevChat, { bot: response.data?.bot }];
+      // });
+      console.log(response.data);
+      // props.setBotAnswer(response.data.bot);
+
       chat.query = "";
     } catch (error) {
       console.log(error);
+      props.setErr(true);
     }
   };
   return (
     <div className="flex justify-center max-w-[700px] w-[60%] max-md:w-[95%] ">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={chatWithBot}
         className="w-[100%] max-h-[100px] flex items-center rounded-[10px] border-2 border-grey-400"
       >
         <Textarea

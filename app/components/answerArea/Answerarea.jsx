@@ -8,11 +8,13 @@ import "tippy.js/dist/tippy.css";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { HamburgerIcon, MenuIcon } from "@chakra-ui/icons";
 import "./Answer.css";
-
+import Typewriter from "typewriter-effect";
 const AnswerArea = (props) => {
   const [botAnswer, setBotAnswer] = React.useState("");
   const [query, setQuery] = React.useState("");
-  const [loader, setLoader] = React.useState(true);
+  const [loader, setLoader] = React.useState(false);
+  const [err, setErr] = React.useState(false);
+  const [hideCursor, setHideCursor] = useState(false);
 
   const [chat, setChat] = React.useState([
     {
@@ -29,6 +31,7 @@ const AnswerArea = (props) => {
     xl: "1200px",
     "2xl": "1536px",
   };
+
   return (
     <div className="h-[100vh] max-h-full w-[100%] relative  ">
       <Box
@@ -76,9 +79,14 @@ const AnswerArea = (props) => {
               m="auto"
               key={index}
             >
-              <ChatArea con={con} />
-              {/* <h1>{con.botReply} </h1>
-              <Text>{con.question} </Text> */}
+              <ChatArea
+                con={con}
+                loader={loader}
+                chatIndex={index}
+                chat={chat}
+                hideCursor={hideCursor}
+                setHideCursor={setHideCursor}
+              />
             </Box>
           );
         })}
@@ -96,6 +104,11 @@ const AnswerArea = (props) => {
         padding="0"
         // border="2px blue solid"
       >
+        {err && (
+          <Text textAlign="center" color="red">
+            Seems an err occurred
+          </Text>
+        )}
         <InputBox
           botAnswer={botAnswer}
           setBotAnswer={setBotAnswer}
@@ -105,6 +118,8 @@ const AnswerArea = (props) => {
           setChat={setChat}
           loader={loader}
           setLoader={setLoader}
+          setErr={setErr}
+          setHideCursor={setHideCursor}
         />
         <Text fontSize="sm" textAlign="center">
           Consider cross checking your report{" "}
@@ -137,8 +152,18 @@ const AnswerArea = (props) => {
   );
 };
 
-const ChatArea = ({ con, loader }) => {
+const ChatArea = ({
+  con,
+  loader,
+  chatIndex,
+  chat,
+  hideCursor,
+  setHideCursor,
+}) => {
   const ref = useRef(null);
+  const isLast = chatIndex == chat.length - 1;
+  console.log(chat.length - 1, "length");
+  console.log(isLast, "is last");
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
@@ -148,7 +173,10 @@ const ChatArea = ({ con, loader }) => {
     <div ref={ref} className="">
       <div className="flex flex-end m-[auto]">
         {con.question ? (
-          <p className="p-2 my-3 rounded-[15px] m-auto bg-[#6841EA] text-[#fff] text-[18px] flex justify-end text-right w-[100%]">
+          <p
+            onClick={() => console.log(chatIndex)}
+            className="p-2 my-3 rounded-[15px] m-auto bg-[#6841EA] text-[#fff] text-[18px] flex justify-end text-right w-[100%]"
+          >
             {" "}
             {con.question}
           </p>
@@ -157,7 +185,27 @@ const ChatArea = ({ con, loader }) => {
         )}
       </div>
 
-      {loader ? <span class="loader"></span> : <Text>{con.bot} </Text>}
+      {/* {loader && isLast ? (
+        <span className="loader"></span>
+      ) : isLast ? (
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter
+              .typeString(`${con.bot}`)
+
+              .changeDelay(0.1)
+
+              .pauseFor(100)
+              .start()
+              .callFunction(() => {
+                typewriter.stop();
+                setHideCursor(false);
+              });
+          }}
+        />
+      ) : (
+        con.bot
+      )} */}
     </div>
   );
 };

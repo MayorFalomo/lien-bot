@@ -32,8 +32,9 @@ const AppContextProvider = ({ children }) => {
   // getCurrentUser takes in a parameter called Id which we'll get from currentUser which is cookies.user
 
   const getCurrentUser = async (token) => {
+    toast("Login successful!");
+
     if (token) {
-      console.log(token);
       try {
         const response = await axios({
           method: "POST",
@@ -42,17 +43,11 @@ const AppContextProvider = ({ children }) => {
             Authorization: `Bearer ${token}`,
           },
         });
-
-        setId(token);
-
-        // Handling the response based on the server's reply
         if (response.status === 200) {
           // Process the response data
-          console.log(response.data, "This is response data");
         } else {
           // Handle errors or unauthorized access
         }
-        // console.log(res, "This is res");
       } catch (err) {
         console.log(err);
       }
