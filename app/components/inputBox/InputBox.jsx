@@ -43,7 +43,7 @@ const InputBox = (props) => {
     try {
       const response = await axios({
         method: "Post",
-        url: "http://217.160.156.197/chat",
+        url: "https://apps.lien.bloombyte.dev/chat",
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -51,6 +51,7 @@ const InputBox = (props) => {
       }).catch((err) => {
         console.log(err);
         props.setErr(true);
+        router.push("/login");
       });
       if (response.status == 401) {
         props.setErr(true);

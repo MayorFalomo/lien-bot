@@ -103,10 +103,10 @@ const SignUp = () => {
     try {
       const response = await axios({
         method: "POST",
-        url: "http://217.160.156.197/signup/",
+        url: "https://apps.lien.bloombyte.dev/signup/",
         data: userInfo,
         headers: {
-          "Content-Type": "application/json", // Corrected "multipart/json" to "application/json"
+          "Content-Type": "application/json",
         },
       });
 
@@ -116,9 +116,6 @@ const SignUp = () => {
         console.log("Validation Error");
         setIsAuth(true);
       }
-      // If the response contains an id, then let getCurrentUser function route to the home page/chat section
-      // contextValue.getCurrentUser(response.data.user._id);
-      // router.push("/");
     } catch (error) {
       console.log(error);
       setIsAuth(true);

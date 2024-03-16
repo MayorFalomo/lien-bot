@@ -12,52 +12,33 @@ const AppContextProvider = ({ children }) => {
   const router = useRouter();
   const [activeId, setActiveId] = useState("");
   const [id, setId] = useState("");
-
-  useEffect(() => {
-    // Perform localStorage action
-    if (typeof window !== "undefined") {
-      const localStorageId = localStorage?.getItem("user");
-      setActiveId(localStorageId);
-    }
-  }, []);
-
-  // const localStorageId = localStorage.getItem("user");
-  // const [isAuth, setIsAuth] = useState(true);
   const [user, setUser] = useState(null);
   const [notes, setNotes] = useState([]);
-  const currentUser = activeId;
 
-  // console.log(currentUser, "currentUser");
-
-  // getCurrentUser takes in a parameter called Id which we'll get from currentUser which is cookies.user
+  // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
 
   const getCurrentUser = async (token) => {
-    toast("Login successful!");
-
     if (token) {
       try {
         const response = await axios({
           method: "POST",
-          url: "http://217.160.156.197/create_assistant",
+          url: "https://apps.lien.bloombyte.dev/create_assistant",
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         if (response.status === 200) {
           // Process the response data
+          toast(`user login successful!`);
         } else {
           // Handle errors or unauthorized access
+          router.push("/login");
         }
       } catch (err) {
         console.log(err);
       }
     }
   };
-
-  //UseEffect to load cookies.user and just
-  //   useEffect(() => {
-  //     getCurrentUser(currentUser ? currentUser : "");
-  //   }, [currentUser]);
 
   const contextValue = {
     user,

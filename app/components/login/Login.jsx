@@ -67,10 +67,10 @@ const Login = () => {
       email: email,
       password: password,
     };
-    console.log(userInfo, "This is userInfo");
+    // console.log(userInfo, "This is userInfo");
     const response = await axios({
       method: "POST",
-      url: "http://217.160.156.197/login/",
+      url: "https://apps.lien.bloombyte.dev/login/",
       data: userInfo,
       headers: {
         "Content-Type": "application/json",
@@ -221,7 +221,6 @@ const Login = () => {
           </Stack>
         </Box>
       </Container>
-      <ToastContainer />
     </Container>
   );
 };

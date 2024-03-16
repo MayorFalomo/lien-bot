@@ -4,6 +4,7 @@ import AnswerArea from "./components/answerArea/Answerarea";
 import "./globals.css";
 import { useEffect, useState } from "react";
 import MobileNav from "./components/navbar/MobileNav";
+import { ToastContainer } from "react-toastify";
 export default function Home() {
   const [navbarState, setNavbarState] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
@@ -38,6 +39,7 @@ export default function Home() {
         mobileNav={mobileNav}
         setMobileNav={setMobileNav}
       />
+      <ToastContainer />
     </main>
   );
 }
