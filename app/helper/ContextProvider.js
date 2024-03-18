@@ -20,6 +20,9 @@ const AppContextProvider = ({ children }) => {
   const getCurrentUser = async (token) => {
     if (token) {
       try {
+        console.log(token, "i am token");
+        const tok = localStorage.getItem("token");
+        console.log(tok, "i am localstorage token");
         const response = await axios({
           method: "POST",
           url: "https://apps.lien.bloombyte.dev/create_assistant",
