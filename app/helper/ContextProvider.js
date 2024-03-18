@@ -22,7 +22,7 @@ const AppContextProvider = ({ children }) => {
     } else {
       router.push("/login");
     }
-  }, [token]);
+  }, []);
 
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
 
