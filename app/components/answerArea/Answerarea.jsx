@@ -18,6 +18,8 @@ const AnswerArea = (props) => {
   const [query, setQuery] = React.useState("");
   const [loader, setLoader] = React.useState(false);
   const [err, setErr] = React.useState(false);
+  const [tryAgain, setTryAgain] = React.useState(false);
+
   const [hideCursor, setHideCursor] = useState(false);
 
   const [chat, setChat] = React.useState([
@@ -121,6 +123,11 @@ const AnswerArea = (props) => {
         padding="0"
         // border="2px blue solid"
       >
+        {tryAgain && (
+          <Text textAlign="center" color="red">
+            Try again
+          </Text>
+        )}
         {err && (
           <Text textAlign="center" color="red">
             Seems an err occurred
@@ -137,6 +144,7 @@ const AnswerArea = (props) => {
           setLoader={setLoader}
           setErr={setErr}
           setHideCursor={setHideCursor}
+          setTryAgain={setTryAgain}
         />
         <Text fontSize="sm" textAlign="center">
           Consider cross checking your report{" "}

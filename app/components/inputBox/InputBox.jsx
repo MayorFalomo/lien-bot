@@ -14,15 +14,7 @@ import { forwardRef } from "@chakra-ui/react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 const InputBox = (props) => {
-  const [show, setShow] = React.useState(false);
   const [query, setQuery] = React.useState("");
-
-  const router = useRouter();
-  //   setChat(prevChat => {
-  //   const newChat = [...prevChat]; // create a copy of the state
-  //   newChat.push(item); // push the new item
-  //   return newChat; // update the state
-  // });
 
   const handleSubmit = async (e) => {
     e.code == "Enter" && chatWithBot(e);
@@ -55,6 +47,8 @@ const InputBox = (props) => {
       if (response.status == 401) {
         props.setErr(true);
         // router.push("/login");
+      } else if (response.status == 400) {
+        props.setTryAgain(true);
       }
 
       props.setLoader(false);
