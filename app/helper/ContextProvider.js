@@ -14,15 +14,15 @@ const AppContextProvider = ({ children }) => {
   const [id, setId] = useState("");
   const [user, setUser] = useState(null);
   const [notes, setNotes] = useState([]);
+  const [tok, setTok] = useState(localStorage.getItem("token"));
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      getCurrentUser(token);
+    if (tok) {
+      getCurrentUser(tok);
     } else {
       router.push("/login");
     }
-  }, []);
+  }, [tok]);
 
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
 
