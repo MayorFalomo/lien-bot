@@ -81,7 +81,6 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       router.push("/");
       contextValue.getCurrentUser(response.data.token);
-      console.log(response.data.token);
     } else {
       console.log("Validation Error");
       setIsAuth(true);
