@@ -51,7 +51,7 @@ const InputBox = (props) => {
       }).catch((err) => {
         console.log(err);
         props.setErr(true);
-        router.push("/login");
+        // router.push("/login");
       });
       if (response.status == 401) {
         props.setErr(true);

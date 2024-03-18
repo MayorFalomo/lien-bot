@@ -29,7 +29,7 @@ const AppContextProvider = ({ children }) => {
         });
         if (response.status === 200) {
           // Process the response data
-          toast(`user login successful!`);
+          toast.success(`user login successful!`);
         } else {
           // Handle errors or unauthorized access
           router.push("/login");
