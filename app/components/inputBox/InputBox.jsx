@@ -33,7 +33,6 @@ const InputBox = (props) => {
     props.setLoader(true);
     if (query) {
       props.setChat((prev) => [...prev, { bot: "", question: query }]);
-      // props.setChat((prev) => [...prev, query]);
     }
     const chat = {
       query: query,
@@ -51,7 +50,7 @@ const InputBox = (props) => {
       }).catch((err) => {
         console.log(err);
         props.setErr(true);
-        router.push("/login");
+        // router.push("/login");
       });
       if (response.status == 401) {
         props.setErr(true);
