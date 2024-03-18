@@ -29,13 +29,13 @@ const AppContextProvider = ({ children }) => {
   const getCurrentUser = async (token) => {
     const tok = localStorage.getItem("token");
 
-    if (tok) {
+    if (token) {
       try {
         const response = await axios({
           method: "POST",
           url: "https://apps.lien.bloombyte.dev/create_assistant",
           headers: {
-            Authorization: `Bearer ${tok}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         if (response.status === 200) {
@@ -47,6 +47,7 @@ const AppContextProvider = ({ children }) => {
         }
       } catch (err) {
         console.log(err);
+        toast.error(`user login failed!`);
       }
     } else {
       router.push("/login");
