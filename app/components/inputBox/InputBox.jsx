@@ -55,7 +55,7 @@ const InputBox = (props) => {
       });
       if (response.status == 401) {
         props.setErr(true);
-        router.push("/login");
+        // router.push("/login");
       }
 
       props.setLoader(false);

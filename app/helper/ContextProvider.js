@@ -18,15 +18,16 @@ const AppContextProvider = ({ children }) => {
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
 
   const getCurrentUser = async (token) => {
-    if (token) {
+    const tok = localStorage.getItem("token");
+
+    if (tok) {
       try {
-        const tok = localStorage.getItem("token");
         console.log(tok, "i am localstorage token");
         const response = await axios({
           method: "POST",
           url: "https://apps.lien.bloombyte.dev/create_assistant",
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${tok}`,
           },
         });
         if (response.status === 200) {
