@@ -40,6 +40,8 @@ const AppContextProvider = ({ children }) => {
       } catch (err) {
         console.log(err);
       }
+    } else {
+      router.push("/login");
     }
   };
 

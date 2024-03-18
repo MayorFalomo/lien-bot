@@ -1,5 +1,5 @@
 "use client";
-import { Box, Container, Flex, Text } from "@chakra-ui/react";
+import { Box, Container, Flex, Icon, Text } from "@chakra-ui/react";
 import React, { useEffect, useRef, useState } from "react";
 import { DownloadIcon, EditIcon } from "@chakra-ui/icons";
 import InputBox from "../inputBox/InputBox";
@@ -9,6 +9,10 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { HamburgerIcon, MenuIcon } from "@chakra-ui/icons";
 import "./Answer.css";
 import Typewriter from "typewriter-effect";
+import { FcCdLogo } from "react-icons/fc";
+import { MdLogout } from "react-icons/md";
+import Link from "next/link";
+
 const AnswerArea = (props) => {
   const [botAnswer, setBotAnswer] = React.useState("");
   const [query, setQuery] = React.useState("");
@@ -55,15 +59,28 @@ const AnswerArea = (props) => {
         <Flex alignItems="center" gap="10px">
           <Text fontSize="20px">Lien Bot </Text>
         </Flex>
-        <Tippy content="download as document" placement="bottom">
-          <Box
-            border="1px grey solid"
-            borderRadius="7px"
-            className="py-[4px] px-[6px]"
-          >
-            <DownloadIcon fontSize="20px" cursor="pointer" />
-          </Box>
-        </Tippy>
+        <Flex alignItems="center" gap="20px">
+          <Tippy content="download as document" placement="bottom">
+            <Box
+              border="1px grey solid"
+              borderRadius="7px"
+              className="py-[4px] px-[6px]"
+            >
+              <DownloadIcon fontSize="20px" cursor="pointer" />
+            </Box>
+          </Tippy>
+          <Tippy content="logout" placement="bottom">
+            <Link href="/login">
+              <Box
+                border="1px grey solid"
+                borderRadius="7px"
+                className="py-[4px] px-[6px]"
+              >
+                <Icon as={MdLogout} fontSize="20px" cursor="pointer" />
+              </Box>
+            </Link>
+          </Tippy>
+        </Flex>
       </Box>
       <Box
         mt="100px"
