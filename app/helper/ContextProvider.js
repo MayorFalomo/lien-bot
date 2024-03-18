@@ -38,7 +38,7 @@ const AppContextProvider = ({ children }) => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        });
+        }).catch((err) => console.log(err) && router.push("/login"));
         if (response.status === 200) {
           // Process the response data
           toast.success(`user login successful!`);

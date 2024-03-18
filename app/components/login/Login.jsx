@@ -150,6 +150,7 @@ const Login = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="Enter email address"
+                defaultValue={email}
                 size="lg"
               />
               {hidePassword ? (
@@ -159,6 +160,7 @@ const Login = () => {
                     type="text"
                     placeholder="Enter password"
                     size="lg"
+                    defaultValue={password}
                   />
                   <span
                     onClick={() => setHidePassword(false)}
@@ -174,6 +176,7 @@ const Login = () => {
                     placeholder="Enter password"
                     size="lg"
                     onChange={(e) => setPassword(e.target.value)}
+                    defaultValue={password}
                   />
                   <span
                     onClick={() => setHidePassword(true)}
