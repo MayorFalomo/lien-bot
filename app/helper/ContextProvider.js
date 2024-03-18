@@ -15,6 +15,15 @@ const AppContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [notes, setNotes] = useState([]);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getCurrentUser(token);
+    } else {
+      router.push("/login");
+    }
+  }, [token]);
+
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
 
   const getCurrentUser = async (token) => {
@@ -22,7 +31,6 @@ const AppContextProvider = ({ children }) => {
 
     if (tok) {
       try {
-        console.log(tok, "i am localstorage token");
         const response = await axios({
           method: "POST",
           url: "https://apps.lien.bloombyte.dev/create_assistant",

@@ -46,9 +46,15 @@ const InputBox = (props) => {
       });
       if (response.status == 401) {
         props.setErr(true);
+        setTimeout(() => {
+          props.setErr(false);
+        }, 4000);
         // router.push("/login");
       } else if (response.status == 400) {
         props.setTryAgain(true);
+        setTimeout(() => {
+          props.setTryAgain(false);
+        }, 4000);
       }
 
       props.setLoader(false);
