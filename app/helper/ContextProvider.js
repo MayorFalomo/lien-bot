@@ -14,9 +14,10 @@ const AppContextProvider = ({ children }) => {
   const [id, setId] = useState("");
   const [user, setUser] = useState(null);
   const [notes, setNotes] = useState([]);
-  const [tok, setTok] = useState(localStorage.getItem("token"));
+  // const [tok, setTok] = useState();
 
   useEffect(() => {
+    const tok = localStorage.getItem("token");
     if (tok) {
       getCurrentUser(tok);
     } else {
