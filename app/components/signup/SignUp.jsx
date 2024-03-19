@@ -33,7 +33,7 @@ const SignUp = () => {
 
   const [notifications, setNotifications] = useState([]);
   const [isAuth, setIsAuth] = useState(false);
-  const [loadingBtn, setLoadingBtn] = useState(true);
+  const [loadingBtn, setLoadingBtn] = useState(false);
 
   const router = useRouter();
 
@@ -98,36 +98,39 @@ const SignUp = () => {
       email: email,
       password: password,
     };
-    setLoadingBtn(true);
 
-    try {
-      const response = await axios({
-        method: "POST",
-        url: "https://apps.lien.bloombyte.dev/signup/",
-        data: userInfo,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    if (userInfo.email && userInfo.password) {
+      setLoadingBtn(true);
 
-      if (response.status === 201) {
-        setLoadingBtn(false);
-        toast.success("sign up successful, now login");
-        router.push("/login");
-      } else {
-        console.log("Validation Error");
-        toast.error("sign up unsuccessful");
+      try {
+        const response = await axios({
+          method: "POST",
+          url: "https://apps.lien.bloombyte.dev/signup/",
+          data: userInfo,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (response.status === 201) {
+          setLoadingBtn(false);
+          toast.success("sign up successful, now login");
+          router.push("/login");
+        } else {
+          console.log("Validation Error");
+          toast.error("sign up unsuccessful");
+          setIsAuth(true);
+          setTimeout(() => {
+            setIsAuth(false);
+          }, 4000);
+        }
+      } catch (error) {
+        console.log(error);
         setIsAuth(true);
         setTimeout(() => {
           setIsAuth(false);
         }, 4000);
       }
-    } catch (error) {
-      console.log(error);
-      setIsAuth(true);
-      setTimeout(() => {
-        setIsAuth(false);
-      }, 4000);
     }
   };
 
@@ -181,10 +184,8 @@ const SignUp = () => {
           alignItems="center"
           height="100%"
           width="95%"
-          // width={{ base: "95%", sm: "95%", nav: "90%" }}
           p="0"
           m="0 auto"
-          // border="2px green solid"
         >
           <Stack
             display="flex"
@@ -194,7 +195,6 @@ const SignUp = () => {
             spacing="20px"
             w="100%"
             h="100%"
-            // border="2px green solid"
           >
             <Heading as="h3" size="lg">
               Create Your Account
