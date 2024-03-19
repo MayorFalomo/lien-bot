@@ -17,7 +17,7 @@ const AnswerArea = (props) => {
   const [botAnswer, setBotAnswer] = React.useState("");
   const [query, setQuery] = React.useState("");
   const [loader, setLoader] = React.useState(false);
-  const [err, setErr] = React.useState(false);
+  const [err, setErr] = useState(false);
   const [tryAgain, setTryAgain] = React.useState(false);
 
   const [hideCursor, setHideCursor] = useState(false);

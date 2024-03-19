@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>@import url('https://fonts.googleapis.com/css2?family=Abel&family=Alata&family=Archivo&family=Barlow:wght@600&family=Cabin:wght@500&family=Cinzel:wght@500;800&family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Gilda+Display&family=Inclusive+Sans&family=Inter:wght@400;600&family=Josefin+Sans:wght@300;400;600&family=Lato:wght@400;700&family=League+Spartan:wght@400;500;700&family=Manrope:wght@300&family=Maven+Pro&family=Merriweather:wght@700&family=Montserrat:ital,wght@0,400;0,600;0,700;1,500&family=Nanum+Gothic&family=Nunito&family=Nunito+Sans:opsz@6..12&family=Open+Sans:ital,wght@0,400;0,500;0,700;1,600&family=Patrick+Hand&family=Playfair+Display:wght@500&family=Poppins&family=Rajdhani:wght@500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:wght@300;400&family=Saira&family=Ubuntu:wght@300;500;700&family=Unica+One&family=Varela&family=Varela+Round&display=swap');
+
+*{
+
+    padding: 0;
+
+    margin: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+
+body{
+
+   overflow-x: hidden;
+
+   font-family: 'inter';
+
+}
+
+
+
+.App{
+
+    overflow-x: hidden;
+
+    max-width: 80vw;
+
+    margin: 30px auto;
+
+   /* F1F4FD */
+
+}
+
+
+
+.App p{
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+}
+
+
+
+.App .first-section{
+
+    border-right: 2px black solid;
+
+    padding: 10px;
+
+    width: 50%;
+
+}
+
+
+
+.App .first-section .addressBox{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    max-width: 90%;
+
+}
+
+
+
+.App .first-section .addressBox p{
+
+    /* text-decoration: underline;
+
+        background-color: #F1F4FD;
+
+    padding-top: 10px; */
+     background-color: #F1F4FD;
+
+    margin-top: 10px;
+
+    border-bottom: 2px #000 solid;
+
+    width: 100%;
+
+    height: 25px;
+
+}
+
+
+
+.App .first-section .emptyBoxes{
+
+    background-color: #F1F4FD;
+
+    margin-top: 10px;
+
+    border-bottom: 2px #000 solid;
+
+    width: 90%;
+
+    height: 25px;
+
+}
+
+
+
+.second-section{
+
+    display: flex;
+
+    align-items: flex-start;
+
+}
+
+
+
+.App .second-section{
+
+    border-top: 2px black solid;
+
+    margin-bottom: 10px;
+
+    /* padding: 10px;
+
+    width: fit-content; */
+
+}
+
+
+
+.App .second-section .claim-mechanics{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    width: 40%;
+
+}
+
+
+
+.App .second-section .recorders-use{
+
+    width: 60%;
+
+    padding: 10px;
+
+    border-left: 1px rgba(128, 128, 128, 0.549) solid;
+
+    border-bottom: 1px grey solid;
+
+    border-right: 1px grey solid;
+
+    position: relative;
+
+}
+
+.App .second-section .recorders-use .recordersUse{
+
+    position: absolute;
+
+    top: -25px;
+
+    left: 50%;
+
+    right: 50%;
+
+    margin: 0 auto;
+
+    width: 100%;
+
+}
+
+
+
+.App .second-section .recorders-use .checkboxContainer{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    /* border: 2px red solid; */
+
+    margin-top: 5px;
+
+    /* margin-bottom: 5px; */
+
+}
+
+.App .second-section .recorders-use .exempt{
+
+     margin-top: 5px;
+
+    }
+
+
+
+.App .second-section .flexedCheckContainer{
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+   
+
+}
+
+
+
+.App .letter-content{
+
+   margin-top: 20px;
+
+}
+
+
+
+.App .letter-content .mainContentContainer p{
+
+    line-height: 1.6;
+
+    /* word-break: break-all; */
+
+}
+
+
+
+.App .letter-content .mainContentContainer .first-part{
+
+  margin: 10px auto;
+
+}
+
+.App .letter-content .mainContentContainer .first-part #rated{
+
+  text-decoration: underline;
+  border-bottom: 1px solid black;
+  color: #fff;
+}
+
+.App .letter-content .mainContentContainer .first-part .span{
+
+    text-decoration: underline;
+
+    padding-top: 3px;
+
+    background-color: #F1F4FD;
+
+}
+
+
+
+.App .third-section{
+
+  margin-top: 20px;
+
+  /* border: 2px red solid; */
+
+}
+
+.App .third-section .claimant-section{
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+}
+
+
+
+.App .claimant-section .dated{
+
+width: 45%;
+
+}
+
+
+
+.App .claimant-section .dated span{
+
+      text-decoration: underline;
+
+    padding-top: 3px;
+
+    background-color: #F1F4FD;
+
+}
+
+
+
+.App .claimant-section .claimant{
+
+    width: 55%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+}
+
+
+
+.App .claimant-section .claimant .claimantText p{
+
+     text-decoration: underline;
+
+    padding-top: 3px;
+
+    background-color: #F1F4FD;
+
+ 
+
+}
+
+.App .claimant-section .claimant .claimantTexts p{
+
+      width: 200px;
+
+    border-bottom: 2px #000 solid;
+
+    margin-top: 3px;
+
+}
+
+
+
+.App footer{
+
+    margin: 10px auto;
+
+}
+
+
+
+
+
+.App footer p span{
+
+     text-decoration: underline;
+
+    padding-top: 3px;
+
+    background-color: #F1F4FD;
+
+}
+
+
+
+.App footer .dated-footer{
+
+    display: flex !important;
+
+    align-items: flex-start !important;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin: 20px auto;
+
+}
+
+.App footer .dated-footer .dated{
+
+    /* width: 45%; */
+
+}
+
+.App footer .dated-footer .signature{
+
+    /* width: 55%; */
+
+    display: flex;
+
+    flex-direction: column;
+
+    
+
+}
+
+.App footer .dated-footer .signature span{
+
+    width: 200px;
+
+   border-bottom: 2px #000 solid;
+
+}
+
+.App footer .dated-footer .signature p{
+
+   text-align: center;
+
+}
+
+
+
+.App footer .dated-footer span{
+
+     text-decoration: underline;
+
+    padding-top: 3px;
+
+    background-color: #F1F4FD;
+
+}
+
+
+
+
+
+@media (max-width: 980px) {
+
+    .App .second-section .claim-mechanics h1{
+
+        font-size: 20px;
+
+    }
+
+    .App .second-section .claim-mechanics h3{
+
+        font-size: 16px;
+
+    }
+
+    .App .second-section .recorders-use h2{
+
+        font-size: 18px;
+
+    }
+
+    .App footer h2{
+
+        font-size: 18px;
+
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .App .second-section .claim-mechanics h1{
+
+        font-size: 17px;
+
+    }
+
+        .App .second-section .recorders-use h2{
+
+        font-size: 16px;
+
+    }
+
+    .App footer h2{
+
+        font-size: 16px;
+
+    }
+
+   
+
+}
+
+@media (max-width: 580px) {
+
+    .App {
+
+       max-width: 95vw;
+
+    }
+
+    .App p{
+
+    font-size: 13px;
+
+}
+
+.App .second-section .recorders-use h2{
+
+        font-size: 14px;
+
+    }
+
+    .App .first-section{
+
+    width: 70%;
+
+}
+
+.App .first-section .addressBox{
+
+    max-width: 95%;
+
+}
+
+.App .first-section .addressBox span{
+
+    font-size: 13px;
+
+    word-break: break-all;
+
+}.App .first-section .emptyBoxes{
+
+    width: 95%;
+
+    /* height: 25px; */
+
+}
+
+ .App .second-section .claim-mechanics h1{
+
+        font-size: 14px;
+
+    }
+
+     .App .second-section .claim-mechanics h3{
+
+        font-size: 13px;
+
+    }
+
+    .App .second-section .recorders-use .recordersUse{
+
+   font-size: 10px;
+
+   left: 52%;
+
+}
+
+     .App .second-section .recorders-use .checkboxContainer span{
+
+        font-size: 13px;
+
+    }
+
+     .App .second-section .recorders-use .exempt span{
+
+        font-size: 13px;
+
+      word-break: break-all;
+
+    }
+
+     .App .second-section .recorders-use .exempt{
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 5px;
+
+    }
+
+    .App .second-section .flexedCheckContainer{
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 5px;
+
+   
+
+}
+
+ .App .claimant-section .claimant .claimantText{
+
+   word-break: break-all;
+
+}
+
+ .App .claimant-section .claimant .claimantText span{
+
+   font-size: 14px;
+
+}
+
+}
+
+
+
+@media (max-width: 450px) {
+
+   .App footer p{
+
+    font-size: 13px;
+
+   }
+
+  
+
+   .App footer span{
+
+    font-size: 13px;
+
+   }
+
+    }
+    </style>
+    <title>lien File</title>
+
+  </head>
+
+
+  <body>
+
+    <div class="App">
+
+      <section class="first-section" >
+
+        <div class="addressBox" >
+
+          <span>Recording requested by (name):</span>
+
+          <p> </p>
+
+        </div>
+
+        <div  class="addressBox">
+
+          <span>When Recorded, mail to (name and address):</span>
+
+                    <p></p>
+
+        </div>
+
+        <div class="emptyBoxes" >
+
+          <span></span>
+
+          <p></p>
+
+        </div>
+
+        <div class="emptyBoxes">
+
+           <span></span>
+
+          <p></p>
+
+        </div>
+
+        <div class="emptyBoxes">
+
+           <span></span>
+
+          <p></p>
+
+        </div>
+
+      </section>
+
+
+
+      <section class="second-section" >
+
+        <div class="claim-mechanics" >
+
+          <h1>CLAIM OF MECHANICS LIEN</h1>
+
+          <h3>Cal. Civ Code $ 8416</h3>
+
+        </div>
+
+        <div class="recorders-use" >
+
+          <h2>Declaration of Exemption From Gov't Code $ 27388.1 Fee</h2>
+
+          <div  class="checkboxContainer">
+
+            <input disabled type="checkbox" />
+
+            <span>Transfer is exempt from fee per GC $ 27388. 1(a)(2):</span>
+
+          </div>
+
+          <div class="checkboxContainer">
+
+            <input disabled type="checkbox" />
+
+            <span>recorded concurrently "in connection with" transfer subject to DTT</span>
+
+          </div>
+
+          <div class="exempt" >
+
+            <input disabled type="checkbox" />
+
+            <span>recorded concurrently "in connection with" a transfer of residential dwelling to an owner-occupier</span>
+
+          </div>
+
+          <div class="checkboxContainer">
+
+            <input disabled type="checkbox" />
+
+            <span>Transfer is exempt from fee per GC $ 27388. 1(a)(1):</span>
+
+          </div>
+
+          <div class="flexedCheckContainer" >
+
+            <div class="checkboxContainer" >
+
+            <input disabled type="checkbox" />
+
+            <span>Fee cap of $225.00 reached </span>
+
+            </div>
+
+            <div class="checkboxContainer" >
+
+            <input disabled type="checkbox" />
+
+            <span>Fee cap of $225.00 reached </span>
+
+          </div>
+
+          <p class="recordersUse" >Recorders use only </p>
+
+        </div>
+
+      </section>
+
+
+
+      <section class="letter-content" >
+
+        <div class="mainContentContainer" >
+
+          <p class="first-part" >1. <span class="span" >{{ full_legal_name }}</span> ("claimant") claims a mechanics lien for the labor or services or equipment or materials described paragraph 2. furnished for a work of improvement on that certain real property located in the Country of <span class="span" > {{ property_country }} </span> State of California, and more particularly described as (address and/or sufficient description): <span class="span" > {{ property_address }}</span> </p>
+
+        <p  class="first-part" >2. After deducting all just credits and offsets, the sum of <span class="span" > {{ Tamount_unpaid }} </span>, together with interest at the rate of <span id="rated" > Lorem ipsum  </span>  per annum from <span class="span" > {{ commencement_date }} to {{ completion_date }} </span> (date when balance became due), is due claimant for the following labor, materials, services, or equipment: <span class="span" >  {{ materials_provided }}</span> </p>
+
+      <p  class="first-part" >3. Claimant furnished the labor or services or equipment or materials, at the request of <span class="span" > {{ Owner_full_legal_name }}</span> (employer, person or entity to whom labor, materials, services, or equipment were furnished). </p>  
+
+    <p  class="first-part" >4. The name and address of the owner or reputed owner of the real property is/are: <span class="span" > {{ Owner_full_legal_name }} at {{ owner_adress }} </span> </p>  
+
+  <p  class="first-part" >5. Claimant's address is: <span class="span" > {{ address }}</span> </p>  
+
+  </div>
+
+      </section>
+
+
+
+      <section class="third-section"  >
+
+        <div class="claimant-section" >
+
+        <div class="dated" >
+
+        <p>Dated <span> {{ Payment_date }}. </span></p>
+
+        </div>
+
+
+
+        <div class="claimant" >
+
+          <div class="claimantText">
+
+            <p>{{full_legal_name}}</p>
+
+           <span>Claimant</span>
+
+
+
+          </div>
+
+          <div class="claimantTexts" >
+
+             <p>  </p>
+
+           <span>Signature of Claimant or authorized agent</span>
+
+
+
+          </div>
+
+          <div class="claimantText" >
+
+            <p>{{full_legal_name}} </p>
+
+          <span>  Print Name and Title </span>
+
+          </div>
+
+        </div>
+
+        </div>
+
+
+
+      </section>
+
+
+
+      <footer>
+
+        <h2 style="text-align: center;" >VERIFICATION </h2>
+
+        <br>
+
+       <p class="texts" >I, <span>{{ full_legal_name }}</span>, am the: <span>{{ Owner_full_legal_name }}</span> ("owner", "president", "authorized agent", "partner" etc.) of claimant on the forgoing claim of mechanics lien, and i'm authorized to make this verification for and on it's behalf. I have read the foregoing claim of mechanics lien and know the contents of the claim of mechanics lien to be true to my own knowledge. </p>
+
+        <br>
+
+       <p> I declare under penalty of perjury under the laws of the State of California that the foregoing is true and correct. </p>
+
+        <br>
+
+       <div class="dated-footer" >
+
+        <div class="dated" >
+
+                <p>Dated <span>{{ form_date }} </span> </p>
+
+                </div>
+
+<div class="signature" >
+
+        <span></span>
+
+        <p style="font-size: 14px" >signature</p>
+
+        </div>
+
+
+
+       </div>
+
+      </footer>
+
+    </div>
+
+  </body>
+
+</html>

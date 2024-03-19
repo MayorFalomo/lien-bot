@@ -102,7 +102,7 @@ const InputBox = (props) => {
           _placeholder={{ pt: "10px" }}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleSubmit}
-          defaultValue={query}
+          value={query}
           // onChange={(e) => {
           //   props.setChat({
           //     ...props.chat,
