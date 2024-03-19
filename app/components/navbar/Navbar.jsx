@@ -37,7 +37,7 @@ const Navbar = (props) => {
           display={props.navbarState ? "none" : "flex"}
         >
           <HStack alignItems="center" spacing="7px">
-            <Avatar size={"sm"} src="./chatgpt.svg" />
+            <Avatar size={"sm"} src="./logos.png" />
             <Text>New chat </Text>
           </HStack>
           <Tippy content="New chat" placement="bottom">

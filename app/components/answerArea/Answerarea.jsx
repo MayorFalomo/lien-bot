@@ -211,21 +211,21 @@ const ChatArea = ({
       {loader && isLast ? (
         <span className="loader"></span>
       ) : isLast ? (
-        <Typewriter
-          onInit={(typewriter) => {
-            typewriter
-              .typeString(`${con.bot}`)
+        // <Typewriter
+        //   onInit={(typewriter) => {
+        //     typewriter
+        //       .typeString(`${con.bot}`)
+        //       .changeDelay(100000)
 
-              .changeDelay(0.02)
-
-              .pauseFor(100)
-              .start()
-              .callFunction(() => {
-                typewriter.stop();
-                setHideCursor(false);
-              });
-          }}
-        />
+        //       .pauseFor(100)
+        //       .start()
+        //       .callFunction(() => {
+        //         typewriter.stop();
+        //         setHideCursor(false);
+        //       });
+        //   }}
+        // />
+        <Text>{con.bot} </Text>
       ) : (
         <Text>{con.bot} </Text>
       )}

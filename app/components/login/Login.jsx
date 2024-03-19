@@ -85,6 +85,10 @@ const Login = () => {
     } else {
       console.log("Validation Error");
       setIsAuth(true);
+      setTimeout(() => {
+        setIsAuth(false);
+        console.log("turned off");
+      }, 4000);
     }
     try {
     } catch (error) {
@@ -114,9 +118,10 @@ const Login = () => {
           <Image
             boxSize="50px"
             objectFit="cover"
-            src="./chatgpt.svg"
+            src="./logos.png"
             alt="Chat gpt"
             margin="30px auto"
+            borderRadius="50%"
           />
         </Box>
         <Box

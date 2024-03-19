@@ -28,8 +28,6 @@ const AppContextProvider = ({ children }) => {
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
 
   const getCurrentUser = async (token) => {
-    const tok = localStorage.getItem("token");
-
     if (token) {
       try {
         const response = await axios({
@@ -49,6 +47,7 @@ const AppContextProvider = ({ children }) => {
       } catch (err) {
         console.log(err);
         toast.error(`user login failed!`);
+        router.push("/login");
       }
     } else {
       router.push("/login");

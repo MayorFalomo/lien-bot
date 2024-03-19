@@ -17,11 +17,13 @@ const InputBox = (props) => {
   const [query, setQuery] = React.useState("");
 
   const handleSubmit = async (e) => {
-    e.code == "Enter" && chatWithBot(e);
+    if (e.code == "Enter") {
+      e.preventDefault();
+      chatWithBot();
+    }
   };
 
-  const chatWithBot = async (e) => {
-    e.preventDefault();
+  const chatWithBot = async () => {
     props.setLoader(true);
     if (query) {
       props.setChat((prev) => [...prev, { bot: "", question: query }]);
@@ -29,6 +31,7 @@ const InputBox = (props) => {
     const chat = {
       query: query,
     };
+    // console.log(chat, "chat");
     props.setQuery(query);
     const token = localStorage.getItem("token");
     try {
@@ -40,8 +43,11 @@ const InputBox = (props) => {
         },
         data: chat,
       }).catch((err) => {
-        console.log(err);
-        props.setErr(true);
+        console.log(err) &&
+          props.setErr(true) &&
+          setTimeout(() => {
+            props.setErr(false);
+          }, 4000);
         // router.push("/login");
       });
       if (response.status == 401) {
@@ -58,26 +64,28 @@ const InputBox = (props) => {
       }
 
       props.setLoader(false);
-      setQuery("");
       // console.log(response, "res");
 
       props.setChat((prevChat) => {
         return [...prevChat, { bot: response.data?.bot }];
       });
-      // console.log(response.data.bot);
-      // props.setBotAnswer(response.data.bot);
+      setQuery(" ");
 
       chat.query = "";
     } catch (error) {
       console.log(error);
       props.setErr(true);
+      setTimeout(() => {
+        setErr(false);
+        console.log("turned off");
+      }, 4000);
     }
   };
   return (
     <div className="flex justify-center max-w-[700px] w-[60%] max-md:w-[95%] ">
       <form
-        onSubmit={chatWithBot}
-        className="w-[100%] max-h-[100px] flex items-center rounded-[10px] border-2 border-grey-400"
+        onSubmit={(e) => e.preventDefault()}
+        className="w-[100%] max-h-[100px] flex items-center rounded-[10px] outline-none border-2 border-grey-400"
       >
         <Textarea
           minH="unset"
@@ -89,12 +97,12 @@ const InputBox = (props) => {
           focusBorderColor="transparent"
           as={ResizeTextarea}
           borderRadius="20px"
-          // outline="0"
+          outline="0"
           placeholder="Ask me something"
           _placeholder={{ pt: "10px" }}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleSubmit}
-          value={query}
+          defaultValue={query}
           // onChange={(e) => {
           //   props.setChat({
           //     ...props.chat,
@@ -103,7 +111,13 @@ const InputBox = (props) => {
           // }}
           // defaultValue={props.query}
         />
-        <Button type="submit" h="1.75rem" p="15px" cursor="pointer">
+        <Button
+          onClick={chatWithBot}
+          type="submit"
+          h="1.75rem"
+          p="15px"
+          cursor="pointer"
+        >
           {<ArrowUpIcon fontSize="24px" />}
         </Button>
       </form>
