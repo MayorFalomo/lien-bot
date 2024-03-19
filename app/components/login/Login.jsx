@@ -213,11 +213,11 @@ const Login = () => {
                 <span className="text-[teal] cursor-pointer ">Sign up </span>
               </Link>
             </Text>
-            <Flex alignItems="center" gap="10px">
+            {/* <Flex alignItems="center" gap="10px">
               <span className="h-[1px] w-[200px] bg-black opacity-[0.25]  max-nav:w-[150px] max-sm:w-[100px]  "></span>
               <Text fontSize="sm">OR </Text>
               <span className="h-[1px] w-[200px] bg-black opacity-[0.25]  max-nav:w-[150px] max-sm:w-[100px]  "></span>
-            </Flex>
+            </Flex> */}
             {/* <Button
               display="flex"
               alignItems="center"
