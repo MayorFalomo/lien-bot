@@ -58,7 +58,6 @@ const AppContextProvider = ({ children }) => {
     user,
     setUser,
     getCurrentUser,
-    id,
   };
 
   return (

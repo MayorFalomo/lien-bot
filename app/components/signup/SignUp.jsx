@@ -286,10 +286,9 @@ const SignUp = () => {
               <Text fontSize="md">OR </Text>
               <span className="h-[1px] w-[200px] bg-black opacity-[0.25]  max-nav:w-[150px]  max-sm:w-[100px] "></span>
             </Flex>
-            <Button
+            {/* <Button
               display="flex"
               alignItems="center"
-              //   justifyContent="flex-start"
               gap="20px"
               size="lg"
               w="100%"
@@ -298,7 +297,7 @@ const SignUp = () => {
               <Text onClick={signUpWithGoogle} fontSize="md">
                 Continue with Google{" "}
               </Text>
-            </Button>
+            </Button> */}
           </Stack>
         </Box>
       </Container>

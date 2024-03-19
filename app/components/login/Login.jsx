@@ -218,8 +218,7 @@ const Login = () => {
               <Text fontSize="sm">OR </Text>
               <span className="h-[1px] w-[200px] bg-black opacity-[0.25]  max-nav:w-[150px] max-sm:w-[100px]  "></span>
             </Flex>
-            r4
-            <Button
+            {/* <Button
               display="flex"
               alignItems="center"
               //   justifyContent="flex-start"
@@ -230,7 +229,7 @@ const Login = () => {
             >
               {<FcGoogle className="text-[24px] max-[400px]:text-[18px]" />}
               <Text fontSize="md">Continue with Google </Text>
-            </Button>
+            </Button> */}
           </Stack>
         </Box>
       </Container>

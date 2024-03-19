@@ -50,7 +50,7 @@ body{
     height: 25px;
 }
 
-.second-section{
+/* .second-section{
     display: flex;
     align-items: flex-start;
 }
@@ -58,9 +58,7 @@ body{
 .App .second-section{
     border-top: 2px black solid;
     margin-bottom: 10px;
-    /* padding: 10px;
-    width: fit-content; */
-}
+} */
 
 .App .second-section .claim-mechanics{
     display: flex;
@@ -117,6 +115,7 @@ body{
 .App .letter-content .mainContentContainer .first-part{
   margin: 10px auto;
 }
+
 .App .letter-content .mainContentContainer .first-part span{
     text-decoration: underline;
     padding-top: 3px;

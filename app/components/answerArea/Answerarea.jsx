@@ -61,8 +61,8 @@ const AnswerArea = (props) => {
         <Flex alignItems="center" gap="10px">
           <Text fontSize="20px">Lien Bot </Text>
         </Flex>
-        <Flex alignItems="center" gap="20px">
-          <Tippy content="download as document" placement="bottom">
+        {/* <Flex alignItems="center" gap="20px"> */}
+        {/* <Tippy content="download as document" placement="bottom">
             <Box
               border="1px grey solid"
               borderRadius="7px"
@@ -70,19 +70,19 @@ const AnswerArea = (props) => {
             >
               <DownloadIcon fontSize="20px" cursor="pointer" />
             </Box>
-          </Tippy>
-          <Tippy content="logout" placement="bottom">
-            <Link href="/login">
-              <Box
-                border="1px grey solid"
-                borderRadius="7px"
-                className="py-[4px] px-[6px]"
-              >
-                <Icon as={MdLogout} fontSize="20px" cursor="pointer" />
-              </Box>
-            </Link>
-          </Tippy>
-        </Flex>
+          </Tippy> */}
+        <Tippy content="logout" placement="bottom">
+          <Link href="/login">
+            <Box
+              border="1px grey solid"
+              borderRadius="7px"
+              className="py-[4px] px-[6px]"
+            >
+              <Icon as={MdLogout} fontSize="20px" cursor="pointer" />
+            </Box>
+          </Link>
+        </Tippy>
+        {/* </Flex> */}
       </Box>
       <Box
         mt="100px"
