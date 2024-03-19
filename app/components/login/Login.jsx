@@ -80,14 +80,18 @@ const Login = () => {
     if (response.status === 200) {
       localStorage.setItem("token", response.data.token);
       router.push("/");
-      const token = localStorage.getItem("token");
+      // const token = localStorage.getItem("token");
       // contextValue.getCurrentUser(token);
+    } else if (response.status == 400) {
+      setIsAuth(true);
+      setTimeout(() => {
+        setIsAuth(false);
+      }, 4000);
     } else {
       console.log("Validation Error");
       setIsAuth(true);
       setTimeout(() => {
         setIsAuth(false);
-        console.log("turned off");
       }, 4000);
     }
     try {

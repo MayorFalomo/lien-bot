@@ -89,8 +89,6 @@ const SignUp = () => {
     }
   };
 
-  // const generatedId = generateId(24);
-
   //Sign up by creating account
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -163,9 +161,6 @@ const SignUp = () => {
         height="100%"
         p="0"
         m="0 auto"
-        // border="2px red solid"
-        // p={{ base: "0", sm: "0" }}
-        // m={{ base: "0", sm: "0" }}
       >
         <Box>
           <Image
