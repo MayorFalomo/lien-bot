@@ -17,11 +17,7 @@ import { useRouter } from "next/navigation";
 const InputBox = (props) => {
   const [query, setQuery] = React.useState("");
 
-  const WS = new WebSocket("ws://217.160.156.197/ws");
-
-  // WS.onopen = () => {
-  //   console.log("WebSocket connection is open");
-  // };
+  const WS = new WebSocket("https://apps.lien.bloombyte.dev/chat");
 
   const handleSubmit = async (e) => {
     if (e.code == "Enter") {
@@ -31,87 +27,87 @@ const InputBox = (props) => {
     }
   };
 
-  const chatWithBot = async () => {
-    try {
-      props.setLoader(true);
-      if (query) {
-        props.setChat((prev) => [...prev, { bot: "", question: query }]);
-      }
-
-      WS.onopen = () => {
-        WS.send(query);
-      };
-
-      WS.onmessage = (e) => {
-        props.setChat((prevChat) => {
-          return [...prevChat, { bot: e.data }];
-        });
-        setQuery(" ");
-        props.setLoader(false);
-      };
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // const chatWithBot = async () => {
-  //   props.setLoader(true);
-  //   if (query) {
-  //     props.setChat((prev) => [...prev, { bot: "", question: query }]);
-  //   }
-  //   const chat = {
-  //     query: query,
-  //   };
-  //   // console.log(chat, "chat");
-  //   props.setQuery(query);
-  //   const token = localStorage.getItem("token");
   //   try {
-  //     const response = await axios({
-  //       method: "Post",
-  //       url: "https://apps.lien.bloombyte.dev/chat",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       data: chat,
-  //     }).catch((err) => {
-  //       console.log(err) &&
-  //         props.setErr(true) &&
-  //         setTimeout(() => {
-  //           props.setErr(false);
-  //         }, 4000);
-  //       // router.push("/login");
-  //     });
-  //     if (response.status == 401) {
-  //       props.setErr(true) &&
-  //         setTimeout(() => {
-  //           props.setErr(false);
-  //         }, 4000);
-  //       // router.push("/login");
-  //     } else if (response.status == 400) {
-  //       props.setTryAgain(true) &&
-  //         setTimeout(() => {
-  //           props.setTryAgain(false);
-  //         }, 4000);
+  //     props.setLoader(true);
+  //     if (query) {
+  //       props.setChat((prev) => [...prev, { bot: "", question: query }]);
   //     }
 
-  //     props.setLoader(false);
-  //     // console.log(response, "res");
+  //     WS.onopen = () => {
+  //       WS.send(query);
+  //     };
 
-  //     props.setChat((prevChat) => {
-  //       return [...prevChat, { bot: response.data?.bot }];
-  //     });
-  //     setQuery(" ");
-
-  //     chat.query = "";
+  //     WS.onmessage = (e) => {
+  //       props.setChat((prevChat) => {
+  //         return [...prevChat, { bot: e.data }];
+  //       });
+  //       setQuery(" ");
+  //       props.setLoader(false);
+  //     };
   //   } catch (error) {
   //     console.log(error);
-  //     props.setErr(true);
-  //     setTimeout(() => {
-  //       setErr(false);
-  //       console.log("turned off");
-  //     }, 4000);
   //   }
   // };
+
+  const chatWithBot = async () => {
+    props.setLoader(true);
+    if (query) {
+      props.setChat((prev) => [...prev, { bot: "", question: query }]);
+    }
+    const chat = {
+      query: query,
+    };
+    // console.log(chat, "chat");
+    props.setQuery(query);
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios({
+        method: "Post",
+        url: "https://apps.lien.bloombyte.dev/chat",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: chat,
+      }).catch((err) => {
+        console.log(err) &&
+          props.setErr(true) &&
+          setTimeout(() => {
+            props.setErr(false);
+          }, 4000);
+        // router.push("/login");
+      });
+      if (response.status == 401) {
+        props.setErr(true) &&
+          setTimeout(() => {
+            props.setErr(false);
+          }, 4000);
+        // router.push("/login");
+      } else if (response.status == 400) {
+        props.setTryAgain(true) &&
+          setTimeout(() => {
+            props.setTryAgain(false);
+          }, 4000);
+      }
+
+      props.setLoader(false);
+      // console.log(response, "res");
+
+      props.setChat((prevChat) => {
+        return [...prevChat, { bot: response.data?.bot }];
+      });
+      setQuery(" ");
+
+      chat.query = "";
+    } catch (error) {
+      console.log(error);
+      props.setErr(true);
+      setTimeout(() => {
+        setErr(false);
+        console.log("turned off");
+      }, 4000);
+    }
+  };
 
   return (
     <div className="flex justify-center max-w-[700px] w-[60%] max-md:w-[95%] ">
