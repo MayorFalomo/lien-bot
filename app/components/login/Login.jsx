@@ -24,13 +24,10 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
-  const { contextValue } = useAppContext();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAuth, setIsAuth] = useState(false);
   const [hidePassword, setHidePassword] = useState(false);
-  const [InLocalStorage, setInLocalStorage] = useState(false);
   const [loadingBtn, setLoadingBtn] = useState(false);
 
   const router = useRouter();
@@ -85,8 +82,6 @@ const Login = () => {
           setLoadingBtn(false);
           localStorage.setItem("token", response.data.token);
           router.push("/");
-          // const token = localStorage.getItem("token");
-          // contextValue.getCurrentUser(token);
         } else if (response.status == 400) {
           setIsAuth(true);
           setTimeout(() => {
