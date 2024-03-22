@@ -29,17 +29,6 @@ const AnswerArea = (props) => {
     },
   ]);
 
-  console.log(contextValue.botCreatedSuccess, "BOT SUCCESS");
-
-  const breakpoints = {
-    base: "0px",
-    sm: "450px",
-    md: "768px",
-    lg: "960px",
-    xl: "1200px",
-    "2xl": "1536px",
-  };
-
   return (
     <div className="h-[100vh] max-h-full w-[100%] relative  ">
       <Box
@@ -123,7 +112,6 @@ const AnswerArea = (props) => {
         alignItems="center"
         gap="10px"
         padding="0"
-        // border="2px blue solid"
       >
         {tryAgain && (
           <Text textAlign="center" color="red">
@@ -153,7 +141,7 @@ const AnswerArea = (props) => {
           <div className="flex justify-center m-auto" role="status">
             <svg
               aria-hidden="true"
-              class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+              className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
               viewBox="0 0 100 101"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"

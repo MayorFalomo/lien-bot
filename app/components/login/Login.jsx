@@ -15,8 +15,8 @@ import React, { useState } from "react";
 import NextLink from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { useAppContext } from "@/app/helper/Helpers";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../firebase-config/Firebase-config";
+// import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+// import { auth, provider } from "../firebase-config/Firebase-config";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -35,31 +35,31 @@ const Login = () => {
 
   const router = useRouter();
 
-  const signInWithGoogle = async (e) => {
-    e.preventDefault();
-    signInWithPopup(auth, provider)
-      .then(async (res) => {
-        let userInfo = {
-          userId: res.user.uid,
-        };
-        // console.log(userInfo);
-        //   localStorage.setItem("user", userInfo?.userId);
+  // const signInWithGoogle = async (e) => {
+  //   e.preventDefault();
+  //   signInWithPopup(auth, provider)
+  //     .then(async (res) => {
+  //       let userInfo = {
+  //         userId: res.user.uid,
+  //       };
+  //       // console.log(userInfo);
+  //       //   localStorage.setItem("user", userInfo?.userId);
 
-        // const response = await axios.get(`https://`);
-        router.push("/");
-        toast(`${res.user.displayName}, login successful!`);
+  //       // const response = await axios.get(`https://`);
+  //       router.push("/");
+  //       toast(`${res.user.displayName}, login successful!`);
 
-        if (userInfo?.userId) {
-          localStorage.setItem("user", userInfo?.userId);
+  //       if (userInfo?.userId) {
+  //         localStorage.setItem("user", userInfo?.userId);
 
-          //   userInfo?.userId
-          //     ? contextValue?.getCurrentUser(userObject.data?._id)
-          //     : "";
-          router.push("/");
-        }
-      })
-      .catch((err) => console.log(err));
-  };
+  //         //   userInfo?.userId
+  //         //     ? contextValue?.getCurrentUser(userObject.data?._id)
+  //         //     : "";
+  //         router.push("/");
+  //       }
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const handleLogin = async (e) => {
     e.preventDefault();

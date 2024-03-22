@@ -121,13 +121,8 @@ const InputBox = (props) => {
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleSubmit}
           value={query}
-          // onChange={(e) => {
-          //   props.setChat({
-          //     ...props.chat,
-          //     query: e.target.value,
-          //   });
-          // }}
-          // defaultValue={props.query}
+          backgroundColor="white"
+          color="black"
         />
         <Button
           onClick={chatWithBot}
@@ -135,6 +130,7 @@ const InputBox = (props) => {
           h="1.75rem"
           p="15px"
           cursor="pointer"
+          disabled={query ? false : true}
         >
           {<ArrowUpIcon fontSize="24px" />}
         </Button>
