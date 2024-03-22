@@ -45,6 +45,14 @@ const MobileNav = (props) => {
         }}
         className={props.mobileNav ? "activeNav" : "inActiveNav"}
       >
+        {props.mobileNav && (
+          <span
+            onClick={() => props.setMobileNav(false)}
+            className="absolute z-50 right-[-50px] top-12 border-2 border-grey-600 p-2 rounded-[8px] cursor-pointer"
+          >
+            {<CloseIcon />}{" "}
+          </span>
+        )}
         <Container
           position="relative"
           p="0"
@@ -53,14 +61,6 @@ const MobileNav = (props) => {
           bg="#FAFAFA"
           overflow="auto"
         >
-          {props.mobileNav && (
-            <span
-              onClick={() => props.setMobileNav(false)}
-              className="absolute right-[-40px] top-6 z-50 border-2 border-grey-600 p-2 rounded-[8px] cursor-pointer"
-            >
-              {<CloseIcon />}{" "}
-            </span>
-          )}
           <Flex
             position="absolute"
             left="0"
