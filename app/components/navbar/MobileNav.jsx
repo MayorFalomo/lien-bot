@@ -21,15 +21,14 @@ const MobileNav = (props) => {
     <AnimatePresence key={props.mobileNav ? "exit" : "stay"} mode="wait">
       <motion.div
         initial={{
-          x: 0,
-          width: 0,
+          width: "0%",
           position: "fixed",
           zIndex: 9,
           left: "-50vw",
           top: 0,
+          transition: { ease: "easeOut", duration: 1 },
         }}
         animate={{
-          x: 0,
           width: "60%",
           position: "fixed",
           zIndex: 9,
@@ -37,8 +36,7 @@ const MobileNav = (props) => {
           top: 0,
         }}
         exit={{
-          x: 0,
-          width: 0,
+          width: "0%",
           position: "fixed",
           zIndex: 9,
           left: "-50vw",
@@ -57,7 +55,6 @@ const MobileNav = (props) => {
             </span>
           )}
           <Flex
-            // border="2px red solid"
             position="absolute"
             left="0"
             top="0"
@@ -79,14 +76,7 @@ const MobileNav = (props) => {
               </span>
             </Tippy>
           </Flex>
-          <Box
-            m="0"
-            p="0"
-            height="90%"
-            overflow="auto"
-            w="100%"
-            // border="2px green solid"
-          >
+          <Box m="0" p="0" height="90%" overflow="auto" w="100%">
             {/* This would be where the previous questions you asked would be */}
           </Box>
           <Box
@@ -101,7 +91,6 @@ const MobileNav = (props) => {
             gap="10px"
             w="100%"
             className="cursor-pointer hover:bg-#fff"
-            // border="2px red solid"
           >
             <Image
               borderRadius="full"

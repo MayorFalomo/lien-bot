@@ -3,19 +3,16 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { AppContext } from "./Helpers";
-// import { useCookies } from "react-cookie";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const AppContextProvider = ({ children }) => {
   const router = useRouter();
-  const [activeId, setActiveId] = useState("");
-  const [id, setId] = useState("");
-  const [notes, setNotes] = useState([]);
-  const [botCreatedSuccess, setBotCreatedSuccess] = useState(false);
-  // const [tok, setTok] = useState();
 
+  const [botCreatedSuccess, setBotCreatedSuccess] = useState(false);
+
+  //First get the token from localStorage and pass it as a parameter to the getCurrentUser function
   useEffect(() => {
     const tok = localStorage.getItem("token");
     if (tok) {
@@ -26,7 +23,6 @@ const AppContextProvider = ({ children }) => {
   }, []);
 
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
-
   const getCurrentUser = async (token) => {
     if (token) {
       try {

@@ -9,10 +9,9 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { ChevronLeftIcon, ChevronRightIcon, EditIcon } from "@chakra-ui/icons";
+import { EditIcon } from "@chakra-ui/icons";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-import { motion } from "framer-motion";
 import "./Navbar.css";
 const Navbar = (props) => {
   return (
@@ -41,7 +40,7 @@ const Navbar = (props) => {
             <Text>New chat </Text>
           </HStack>
           <Tippy content="New chat" placement="bottom">
-            <span className="cursor-pointer">
+            <span className="cursor-not-allowed">
               <EditIcon fontSize="20px" />
             </span>
           </Tippy>
@@ -68,7 +67,6 @@ const Navbar = (props) => {
           gap="10px"
           w="100%"
           className="cursor-pointer max-[650px]:hidden hover:bg-#fff"
-          // border="2px red solid"
         >
           <Image
             borderRadius="full"
