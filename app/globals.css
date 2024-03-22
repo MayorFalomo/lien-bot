@@ -21,12 +21,14 @@ body {
   grid-template-columns: 300px auto;
   transition: all 0.4s ease;
   height: 100vh;
+  overflow: auto;
   /* border: 2px red solid; */
 }
 .activeBar{
   display: grid;
   grid-template-columns: 0px auto;
     transition: all 0.4s ease;
+    overflow: auto;
       /* border: 2px blue solid; */
   height: 100vh;
 

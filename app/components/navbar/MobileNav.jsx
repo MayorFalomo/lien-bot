@@ -45,7 +45,14 @@ const MobileNav = (props) => {
         }}
         className={props.mobileNav ? "activeNav" : "inActiveNav"}
       >
-        <Container position="relative" height="100vh" bg="#FAFAFA" p="0">
+        <Container
+          position="relative"
+          p="0"
+          m="0"
+          height="100vh"
+          bg="#FAFAFA"
+          overflow="auto"
+        >
           {props.mobileNav && (
             <span
               onClick={() => props.setMobileNav(false)}
