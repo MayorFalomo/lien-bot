@@ -33,11 +33,12 @@ const AnswerArea = (props) => {
     <div className="h-[100vh] max-h-full w-[100%] relative  ">
       <Box
         position="absolute"
-        top="0"
+        top="20px"
         left="0"
         zIndex="2"
         p="20px"
         w="100%"
+        maxH="100%"
         bg="#fff"
         display="flex"
         alignItems="center"
