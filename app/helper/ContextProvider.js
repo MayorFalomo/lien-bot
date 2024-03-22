@@ -12,8 +12,8 @@ const AppContextProvider = ({ children }) => {
   const router = useRouter();
   const [activeId, setActiveId] = useState("");
   const [id, setId] = useState("");
-  const [user, setUser] = useState(null);
   const [notes, setNotes] = useState([]);
+  const [botCreatedSuccess, setBotCreatedSuccess] = useState(false);
   // const [tok, setTok] = useState();
 
   useEffect(() => {
@@ -40,6 +40,7 @@ const AppContextProvider = ({ children }) => {
         if (response.status === 200) {
           // Process the response data
           toast.success(`user login successful!`);
+          setBotCreatedSuccess(true);
         } else {
           // Handle errors or unauthorized access
           router.push("/login");
@@ -55,9 +56,8 @@ const AppContextProvider = ({ children }) => {
   };
 
   const contextValue = {
-    user,
-    setUser,
     getCurrentUser,
+    botCreatedSuccess,
   };
 
   return (

@@ -1,18 +1,8 @@
 "use client";
-import {
-  Box,
-  Button,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Textarea,
-} from "@chakra-ui/react";
+import { Button, Textarea } from "@chakra-ui/react";
 import { ArrowUpIcon } from "@chakra-ui/icons";
 import React from "react";
 import ResizeTextarea from "react-textarea-autosize";
-import { forwardRef } from "@chakra-ui/react";
-import axios from "axios";
-import { useRouter } from "next/navigation";
 
 const InputBox = (props) => {
   const [query, setQuery] = React.useState("");
@@ -22,7 +12,6 @@ const InputBox = (props) => {
   const handleSubmit = async (e) => {
     if (e.code == "Enter") {
       e.preventDefault();
-      console.log("entered");
       chatWithBot();
     }
   };
@@ -50,6 +39,7 @@ const InputBox = (props) => {
     }
   };
 
+  //! Endpoint to call when not using socket.
   // const chatWithBot = async () => {
   //   props.setLoader(true);
   //   if (query) {
