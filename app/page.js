@@ -21,7 +21,7 @@ export default function Home() {
         }
       });
     }
-  }, [mobileNav]);
+  }, []);
 
   return (
     <main className={navbarState ? "activeBar" : "homeHeader"}>
