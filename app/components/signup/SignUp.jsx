@@ -114,6 +114,8 @@ const SignUp = () => {
           setLoadingBtn(false);
           toast.success("sign up successful, now login");
           router.push("/login");
+        } else if (response.status === 400) {
+          toast.error("This account already exists!");
         } else {
           console.log("Validation Error");
           toast.error("sign up unsuccessful");
