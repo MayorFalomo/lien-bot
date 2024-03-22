@@ -46,7 +46,10 @@ const AnswerArea = (props) => {
         justifyContent="space-between"
       >
         <span
-          onClick={() => props.setMobileNav(true)}
+          onClick={() => {
+            props.setMobileNav(true);
+            props.setClickedNavState(true);
+          }}
           className="hidden max-[650px]:flex ma cursor-pointer"
         >
           {<HamburgerIcon />}{" "}

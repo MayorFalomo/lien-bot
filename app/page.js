@@ -9,6 +9,7 @@ export default function Home() {
   const [navbarState, setNavbarState] = useState(false);
   const [mobileNav, setMobileNav] = useState(false);
   const [size, setSize] = useState(false);
+  const [clickedNavState, setClickedNavState] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -32,8 +33,12 @@ export default function Home() {
           setSize={setSize}
         />
       }
-      {mobileNav ? (
-        <MobileNav mobileNav={mobileNav} setMobileNav={setMobileNav} />
+      {mobileNav && clickedNavState ? (
+        <MobileNav
+          mobileNav={mobileNav}
+          setMobileNav={setMobileNav}
+          setClickedNavState={setClickedNavState}
+        />
       ) : (
         ""
       )}
@@ -44,6 +49,7 @@ export default function Home() {
         navbarState={navbarState}
         mobileNav={mobileNav}
         setMobileNav={setMobileNav}
+        setClickedNavState={setClickedNavState}
       />
       <ToastContainer />
     </main>
