@@ -35,7 +35,7 @@ const AnswerArea = (props) => {
         position="absolute"
         top="0"
         left="0"
-        zIndex="999"
+        zIndex="2"
         p="20px"
         w="100%"
         bg="#fff"

@@ -13,7 +13,9 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       window.addEventListener("resize", () => {
-        if (window.innerWidth > 650) {
+        if (window.innerWidth < 650) {
+          setMobileNav(true);
+        } else {
           setMobileNav(false);
         }
       });
@@ -28,8 +30,10 @@ export default function Home() {
         size={size}
         setSize={setSize}
       />
-      {mobileNav && (
+      {mobileNav ? (
         <MobileNav mobileNav={mobileNav} setMobileNav={setMobileNav} />
+      ) : (
+        ""
       )}
       <AnswerArea
         setNavbarState={setNavbarState}
