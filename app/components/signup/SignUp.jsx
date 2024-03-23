@@ -32,6 +32,7 @@ const SignUp = () => {
 
   const [isAuth, setIsAuth] = useState(false);
   const [loadingBtn, setLoadingBtn] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
 
   const router = useRouter();
 
@@ -74,7 +75,7 @@ const SignUp = () => {
       password: password,
     };
 
-    if (userInfo.email && userInfo.password) {
+    if (userInfo.email && userInfo.password.length >= 6) {
       setLoadingBtn(true);
 
       try {
@@ -108,6 +109,8 @@ const SignUp = () => {
           setIsAuth(false);
         }, 4000);
       }
+    } else {
+      setPasswordError(true);
     }
   };
 
@@ -234,6 +237,14 @@ const SignUp = () => {
                 <Button type="submit" w="100%" colorScheme="blue" size="lg">
                   Create Account
                 </Button>
+              )}
+              {passwordError ? (
+                <Text color="red" textAlign="center">
+                  {" "}
+                  password must be at least six digits{" "}
+                </Text>
+              ) : (
+                ""
               )}
               {isAuth ? (
                 <Text color="red" textAlign="center">

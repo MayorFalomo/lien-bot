@@ -17,6 +17,8 @@ import "./Navbar.css";
 import { CloseIcon } from "@chakra-ui/icons";
 
 const MobileNav = (props) => {
+  console.log(props.mobileNav, props.clickedNavState);
+
   return (
     <motion.div
       initial={{
@@ -46,7 +48,10 @@ const MobileNav = (props) => {
     >
       {props.mobileNav && (
         <span
-          onClick={() => props.setMobileNav(false)}
+          onClick={() => {
+            props.setMobileNav(false);
+            props.setClickedNavState(false);
+          }}
           className="absolute z-50 right-[-50px] top-12 border-2 border-grey-600 p-2 rounded-[8px] cursor-pointer"
         >
           {<CloseIcon />}{" "}
@@ -59,7 +64,6 @@ const MobileNav = (props) => {
         height="100vh"
         bg="#FAFAFA"
         overflow="auto"
-        border="2px blue solid"
       >
         <Flex
           position="absolute"

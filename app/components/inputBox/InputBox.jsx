@@ -9,9 +9,14 @@ const InputBox = (props) => {
 
   // const WS = new WebSocket("wss://apps.lien.bloombyte.dev/ws");
 
-  const token = localStorage.getItem("token");
+  // WS.onopen = () => {
+  //   console.log("opened");
+  //   WS.send(query);
+  // };
 
-  const WS = new WebSocket(`wss://apps.lien.bloombyte.dev/ws?token=${token}`);
+  // WS.onerror = (e) => {
+  //   console.log(e, "connection failure");
+  // };
 
   const handleSubmit = async (e) => {
     if (e.code == "Enter") {
@@ -21,6 +26,9 @@ const InputBox = (props) => {
   };
 
   const chatWithBot = async () => {
+    const token = localStorage.getItem("token");
+
+    const WS = new WebSocket(`wss://apps.lien.bloombyte.dev/ws?token=${token}`);
     try {
       props.setLoader(true);
       if (query) {
@@ -29,6 +37,10 @@ const InputBox = (props) => {
 
       WS.onopen = () => {
         WS.send(query);
+      };
+
+      WS.onerror = (e) => {
+        console.log(e, "connection has failed");
       };
 
       WS.onmessage = (e) => {
