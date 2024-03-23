@@ -13,15 +13,11 @@ export default function Home() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      window.addEventListener("resize", () => {
-        if (window.innerWidth < 650) {
-          setMobileNav(true);
-        } else {
-          setMobileNav(false);
-        }
-      });
+      if (window.innerWidth < 650) {
+        setMobileNav(true);
+      }
     }
-  }, []);
+  }, [mobileNav]);
 
   return (
     <main className={navbarState ? "activeBar" : "homeHeader"}>

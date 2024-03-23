@@ -28,7 +28,6 @@ const InputBox = (props) => {
       }
 
       WS.onopen = () => {
-        console.log("opened");
         WS.send(query);
       };
 

@@ -39,6 +39,7 @@ const AnswerArea = (props) => {
         p="20px"
         m="0"
         w="100%"
+        minW="100%"
         maxH="100%"
         bg="#fff"
         display="flex"

@@ -59,6 +59,7 @@ const MobileNav = (props) => {
         height="100vh"
         bg="#FAFAFA"
         overflow="auto"
+        border="2px blue solid"
       >
         <Flex
           position="absolute"
