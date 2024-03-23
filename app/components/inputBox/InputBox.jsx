@@ -9,15 +9,6 @@ const InputBox = (props) => {
 
   // const WS = new WebSocket("wss://apps.lien.bloombyte.dev/ws");
 
-  // WS.onopen = () => {
-  //   console.log("opened");
-  //   WS.send(query);
-  // };
-
-  // WS.onerror = (e) => {
-  //   console.log(e, "connection failure");
-  // };
-
   const handleSubmit = async (e) => {
     if (e.code == "Enter") {
       e.preventDefault();

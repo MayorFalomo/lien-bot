@@ -111,6 +111,9 @@ const SignUp = () => {
       }
     } else {
       setPasswordError(true);
+      setTimeout(() => {
+        setPasswordError(false);
+      }, 4000);
     }
   };
 

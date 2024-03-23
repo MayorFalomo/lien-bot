@@ -11,13 +11,13 @@ export default function Home() {
   const [size, setSize] = useState(false);
   const [clickedNavState, setClickedNavState] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth < 650) {
-        setMobileNav(true);
-      }
-    }
-  }, [mobileNav]);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     if (window.innerWidth < 650) {
+  //       setMobileNav(true);
+  //     }
+  //   }
+  // }, []);
 
   return (
     <main className={navbarState ? "activeBar" : "homeHeader"}>
@@ -31,7 +31,7 @@ export default function Home() {
           setSize={setSize}
         />
       )}
-      {mobileNav && clickedNavState ? (
+      {mobileNav ? (
         <MobileNav
           mobileNav={mobileNav}
           setMobileNav={setMobileNav}

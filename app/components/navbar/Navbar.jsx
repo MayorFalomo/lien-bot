@@ -39,11 +39,11 @@ const Navbar = (props) => {
             <Avatar size={"sm"} src="./logos.png" />
             <Text>New chat </Text>
           </HStack>
-          <Tippy content="New chat" placement="bottom">
+          {/* <Tippy content="New chat" placement="bottom">
             <span className="cursor-not-allowed">
               <EditIcon fontSize="20px" />
             </span>
-          </Tippy>
+          </Tippy> */}
         </Flex>
         <Box
           m="0"

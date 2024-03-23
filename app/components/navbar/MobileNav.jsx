@@ -17,8 +17,6 @@ import "./Navbar.css";
 import { CloseIcon } from "@chakra-ui/icons";
 
 const MobileNav = (props) => {
-  console.log(props.mobileNav, props.clickedNavState);
-
   return (
     <motion.div
       initial={{
@@ -44,7 +42,7 @@ const MobileNav = (props) => {
         top: 0,
         transition: { ease: "easeOut", duration: 1 },
       }}
-      className={props.mobileNav ? "activeNav" : "inActiveNav"}
+      className="hidden max-[650px]:flex"
     >
       {props.mobileNav && (
         <span
