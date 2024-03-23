@@ -9,6 +9,10 @@ const InputBox = (props) => {
 
   // const WS = new WebSocket("wss://apps.lien.bloombyte.dev/ws");
 
+  const token = localStorage.getItem("token");
+
+  const WS = new WebSocket(`wss://apps.lien.bloombyte.dev/ws?token=${token}`);
+
   const handleSubmit = async (e) => {
     if (e.code == "Enter") {
       e.preventDefault();
@@ -17,10 +21,6 @@ const InputBox = (props) => {
   };
 
   const chatWithBot = async () => {
-    const token = localStorage.getItem("token");
-
-    const WS = new WebSocket(`wss://apps.lien.bloombyte.dev/ws?token=${token}`);
-
     try {
       props.setLoader(true);
       if (query) {
