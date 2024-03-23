@@ -25,14 +25,16 @@ export default function Home() {
 
   return (
     <main className={navbarState ? "activeBar" : "homeHeader"}>
-      {
+      {mobileNav ? (
+        ""
+      ) : (
         <Navbar
           navbarState={navbarState}
           setNavbarState={setNavbarState}
           size={size}
           setSize={setSize}
         />
-      }
+      )}
       {mobileNav && clickedNavState ? (
         <MobileNav
           mobileNav={mobileNav}

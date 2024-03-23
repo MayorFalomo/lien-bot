@@ -76,7 +76,7 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        });
+        }).catch((err) => console.log("network error"));
 
         if (response.status === 200) {
           setLoadingBtn(false);

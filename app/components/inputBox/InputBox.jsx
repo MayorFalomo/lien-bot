@@ -7,7 +7,7 @@ import ResizeTextarea from "react-textarea-autosize";
 const InputBox = (props) => {
   const [query, setQuery] = React.useState("");
 
-  const WS = new WebSocket("wss://apps.lien.bloombyte.dev/ws");
+  // const WS = new WebSocket("wss://apps.lien.bloombyte.dev/ws");
 
   const handleSubmit = async (e) => {
     if (e.code == "Enter") {
@@ -17,6 +17,10 @@ const InputBox = (props) => {
   };
 
   const chatWithBot = async () => {
+    const token = localStorage.getItem("token");
+
+    const WS = new WebSocket(`wss://apps.lien.bloombyte.dev/ws?token=${token}`);
+
     try {
       props.setLoader(true);
       if (query) {
@@ -24,6 +28,7 @@ const InputBox = (props) => {
       }
 
       WS.onopen = () => {
+        console.log("opened");
         WS.send(query);
       };
 
