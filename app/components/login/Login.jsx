@@ -24,6 +24,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const { contextValue } = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isAuth, setIsAuth] = useState(false);
@@ -76,12 +77,25 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }).catch((err) => console.log("network error"));
+        })
+          .then((res) => {
+            setLoadingBtn(false);
+            localStorage.setItem("token", res.data.token);
+            router.push("/");
+            const token = localStorage.getItem("token");
+            contextValue.setToken(token);
+            contextValue.getCurrentUser(res.data.token);
+            // if (typeof window !== "undefined") {
+            //   window.location.reload();
+            // }
+            router.refresh();
+            console.log(res.data.token, "this is res.data");
+          })
+          .catch((err) => console.log(err, "network error"));
 
         if (response.status === 200) {
-          setLoadingBtn(false);
-          localStorage.setItem("token", response.data.token);
-          router.push("/");
+          console.log("hello world");
+          router.refresh();
         } else if (response.status == 400) {
           setIsAuth(true);
           setTimeout(() => {

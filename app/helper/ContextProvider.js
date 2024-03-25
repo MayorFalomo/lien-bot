@@ -11,16 +11,24 @@ const AppContextProvider = ({ children }) => {
   const router = useRouter();
 
   const [botCreatedSuccess, setBotCreatedSuccess] = useState(false);
+  const [token, setToken] = useState("");
 
   //First get the token from localStorage and pass it as a parameter to the getCurrentUser function
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const token = window.localStorage.getItem("token");
+  //     setToken(token);
+  //   }
+  // }, [token]);
+
   useEffect(() => {
-    const tok = localStorage.getItem("token");
-    if (tok) {
-      getCurrentUser(tok);
-    } else {
-      router.push("/login");
-    }
-  }, []);
+    // const token = window.localStorage.getItem("token");
+    console.log(token, "I am token");
+
+    // const tok = window.localStorage.getItem("token");
+    getCurrentUser(token);
+  }, [token]);
 
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
   const getCurrentUser = async (token) => {
@@ -54,6 +62,7 @@ const AppContextProvider = ({ children }) => {
   const contextValue = {
     getCurrentUser,
     botCreatedSuccess,
+    setToken,
   };
 
   return (

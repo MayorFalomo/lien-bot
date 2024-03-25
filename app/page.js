@@ -7,7 +7,7 @@ import MobileNav from "./components/navbar/MobileNav";
 import { ToastContainer } from "react-toastify";
 export default function Home() {
   const [navbarState, setNavbarState] = useState(false);
-  const [mobileNav, setMobileNav] = useState(false);
+  const [mobileNav, setMobileNav] = useState(false); //Controls when the Navbar should appear
   const [size, setSize] = useState(false);
   const [clickedNavState, setClickedNavState] = useState(false);
 
