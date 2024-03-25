@@ -89,7 +89,7 @@ const Login = () => {
             //   window.location.reload();
             // }
             router.refresh();
-            console.log(res.data.token, "this is res.data");
+            // console.log(res.data.token, "this is res.data");
           })
           .catch((err) => console.log(err, "network error"));
 

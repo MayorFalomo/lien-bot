@@ -24,15 +24,16 @@ const AppContextProvider = ({ children }) => {
 
   useEffect(() => {
     // const token = window.localStorage.getItem("token");
-    console.log(token, "I am token");
+    // console.log(token, "I am token");
 
-    // const tok = window.localStorage.getItem("token");
-    getCurrentUser(token);
+    const tok = window.localStorage.getItem("token");
+    getCurrentUser(token ? token : tok);
   }, [token]);
 
   // getCurrentUser takes in a parameter called token which we'll get from getCurrentUser which is th token response
   const getCurrentUser = async (token) => {
-    if (token) {
+    const tok = window.localStorage.getItem("token");
+    if (token || tok) {
       try {
         const response = await axios({
           method: "POST",
