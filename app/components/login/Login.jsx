@@ -77,25 +77,15 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        })
-          .then((res) => {
-            setLoadingBtn(false);
-            localStorage.setItem("token", res.data.token);
-            router.push("/");
-            const token = localStorage.getItem("token");
-            contextValue.setToken(token);
-            contextValue.getCurrentUser(res.data.token);
-            // if (typeof window !== "undefined") {
-            //   window.location.reload();
-            // }
-            router.refresh();
-            // console.log(res.data.token, "this is res.data");
-          })
-          .catch((err) => console.log(err, "network error"));
+        }).catch((err) => console.log(err, "network error"));
 
         if (response.status === 200) {
-          console.log("hello world");
-          router.refresh();
+          setLoadingBtn(false);
+          localStorage.setItem("token", response.data.token);
+          router.push("/");
+          const token = localStorage.getItem("token");
+          contextValue.setToken(token);
+          contextValue.getCurrentUser(response.data.token);
         } else if (response.status == 400) {
           setIsAuth(true);
           setTimeout(() => {

@@ -284,7 +284,6 @@ const SignUp = () => {
           </Stack>
         </Box>
       </Container>
-      <ToastContainer />
     </Container>
   );
 };
