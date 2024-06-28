@@ -81,7 +81,7 @@ const SignUp = () => {
       try {
         const response = await axios({
           method: "POST",
-          url: "https://apps.lien.bloombyte.dev/signup/",
+          url: `${process.env.NEXT_PUBLIC_BASE_URL}/signup`,
           data: userInfo,
           headers: {
             "Content-Type": "application/json",
